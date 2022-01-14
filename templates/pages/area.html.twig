@@ -1,0 +1,87 @@
+{% extends 'layout/playarea.html.twig' %}
+
+
+{% block content %}
+    <!-- ##### Post Details Area Start ##### -->
+    <section class="post-news-area section-padding-100-0 mb-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Post Details Content Area -->
+                <div class="col-12 col-lg-8 col-xl-9">
+                    <div class="post-details-content mb-100">
+                        <div class="blog-thumbnail mb-50">
+                            <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
+                            {% for photo in area.gallery.photos %}
+                                <div class="about-img">
+                                    <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img src="{{ asset('uploads/'~photo.url) }}" alt="" class="img-responsive"></a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                        <div class="blog-content">
+                            <a href="#" class="post-title">{{ area.name }} </a>
+
+                            <p> Adress du site : {{ area.adress }}</p>
+                            {# <p>{{ area.postalcode}}</p> #}
+                            <p>Ville : {{ area.ville }}</p>
+                            <p>Description : {{ area.decription }}</p>
+                            <p>Cette plaine de jeux est destinée à des enfants agés entre 0 et 3 ans ? {{ area.age1 }}</p>
+                            <p>Cette plaine de jeux est destinée à des enfants agés entre 3 et 6 ans ? {{ area.age2 }}</p>
+                            <p>Cette plaine de jeux est destinée à des enfants agés entre 6 et 10 ans ? {{ area.age3 }}</p>
+                            <p>Cette plaine de jeux est destinée à des enfants agés de plus de 10 ans ? {{ area.age4 }}</p>
+                            <p>Y a t'il un accès PMR? {{ area.pmr }}</p>
+                            <p> Présence de restaurant? {{ area.restaurant }}</p>
+                            <p> Possibilité de pique niquer sur place? {{ area.picnic }}</p>
+                            {# <p> Autres activités? {{ area.otheractivites}}</p> #}
+                            <p> L'adresse web : {{ area.website }}</p>
+                            <p> L'accès est il payant ou gratuit ? {{ area.access }}</p>
+                            <p> Présence de parking ?{{ area.parking }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        {% if app.user %}
+                        <!-- Comment Area Start -->
+                        <div class="comment_area clearfix mb-100">
+                            <h4 class="mb-50">Commentaires</h4>
+                            {% for comment in area.comments %}
+
+                                    <!-- Single Comment Area -->
+                                    <li class="single_comment_area">
+                                        <!-- Comment Content -->
+                                        <div class="comment-content d-flex">
+                                            <!-- Comment Meta -->
+                                            <div class="comment-meta">
+                                                <div class="d-flex">
+                                                    <p class="green-color author ">{{ comment.author.name }}</p>
+                                                    <p class="green-color date">{{ comment.date |date("F jS \\a\\t g:ia") }}</p>
+                                                    <a href="{{ path('reportComment', {id:comment.id}) }}" class="flag"><i class="fa fa-flag "></i></a>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p>{{ comment.content }}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                            {% endfor %}
+                        </div>
+
+                        <div class="post-a-comment-area mb-30 clearfix">
+                            <h4 class="mb-50">Ajouter un commentaire</h4>
+
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+
+                                {{ form (commentForm) }}
+
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

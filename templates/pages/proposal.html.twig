@@ -1,0 +1,76 @@
+{% extends 'layout/playarea.html.twig' %}
+
+{% block content %}
+
+    <!-- ##### Contact Area Start ##### -->
+    <section class="contact-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 col-xl-9">
+                    <div class="contact-content mb-100">
+                        <h4 class="mb-50">Soumettre un nouvel espace de jeux</h4>
+                        <p>Aidez nous à agrandir notre liste d'espace de jeux.<br> Remplissez ce questionnaire </p>
+
+                        <div class="row align-items-center mt-30 mb-50">
+                            <div class="col-12 col-lg-4">
+
+                                <!-- Single Contact Info -->
+                                <div class="single-contact-info d-flex align-items-center">
+                                </div>
+                            </div>
+                            <!-- Contact Form Area -->
+                            <div class="contact-form-area mb-70">
+                                <h4 class="mb-50 green-color">Formulaire de soumission</h4>
+                            </div>
+                        </div>
+                        {{ form_start (proposalForm) }}
+
+                        {{ form_row(proposalForm.name) }}
+                        {{ form_row(proposalForm.firstname) }}
+                        {{ form_row(proposalForm.namearea) }}
+                        {{ form_row(proposalForm.adressarea) }}
+                        {{ form_row(proposalForm.postalarea) }}
+                        {{ form_row(proposalForm.ville) }}
+                        {{ form_row(proposalForm.description) }}
+                        {{ form_row(proposalForm.pmr) }}
+                        {{ form_row(proposalForm.parking) }}
+                        {{ form_row(proposalForm.restaurant) }}
+                        {{ form_row(proposalForm.picnic) }}
+                        {{ form_row(proposalForm.otheractivites) }}
+                        {{ form_row(proposalForm.access) }}
+                        {{ form_row(proposalForm.website) }}
+                        {{ form_row(proposalForm.age1) }}
+                        {{ form_row(proposalForm.age2) }}
+                        {{ form_row(proposalForm.age3) }}
+                        {{ form_row(proposalForm.age4) }}
+                        {{ form_label(proposalForm.gallery) }}
+                        {{ form_errors(proposalForm.gallery.photos) }}
+
+                        <ul id="photo-gallery-list" class="collection-form rtes"
+                            data-prototype="{{ form_widget(proposalForm.gallery.photos.vars.prototype)|e }}"
+                            data-widget-tags="{{ '<li></li>'|e }}"
+                            data-widget-counter="{{ proposalForm.gallery.photos | length }}">
+                            {% for photoField in proposalForm.gallery.photos %}
+                                <li class="existantPhotos">
+                                    {# ici le .value me retourne l'entité liée au champ de formulaire (une entité Photo)#}
+                                    <img src="{{ asset('uploads/'~photoField.vars.value.url) }}" alt="" width="100">
+                                    {{ form_widget(photoField, {'attr': {'class': 'd-none'}}) }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button"
+                                class="add-another-collection-widget btn btn-primary btn-sm"
+                                data-list-selector="#photo-gallery-list">+</button>
+
+                        {% do proposalForm.gallery.setRendered %}
+
+                        {# Fin du formulaire #}
+                        {{ form_rest(proposalForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ##### Contact Area End ##### -->
+{% endblock content %}

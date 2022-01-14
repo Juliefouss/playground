@@ -1,0 +1,65 @@
+{% extends 'layout/admin.html.twig' %}
+
+{% block content%}
+
+    <!-- ##### Contact Area Start ##### -->
+    <section class="contact-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 col-xl-9">
+                    <div class="contact-content mb-100">
+                        <h4 class="mb-50">Soumettre un nouvel espace de jeux</h4>
+                        <p>Aidez nous à agrandir notre liste d'espace de jeux.<br> Remplissez ce questionnaire </p>
+                    </div>
+                </div>
+            </div>
+
+            {{ form_start (areaForm) }}
+
+            {{ form_row(areaForm.name) }}
+            {{ form_row(areaForm.adress) }}
+            {{ form_row(areaForm.postalcode) }}
+            {{ form_row(areaForm.ville) }}
+            {{ form_row(areaForm.decription) }}
+            {{ form_row(areaForm.age1) }}
+            {{ form_row(areaForm.age2) }}
+            {{ form_row(areaForm.age3) }}
+            {{ form_row(areaForm.age4) }}
+            {{ form_row(areaForm.pmr) }}
+            {{ form_row(areaForm.restaurant) }}
+            {{ form_row(areaForm.picnic) }}
+            {{ form_row(areaForm.otheractivites) }}
+            {{ form_row(areaForm.website) }}
+            {{ form_row(areaForm.access) }}
+            {% for error in areaForm.gallery.vars.errors.form.getErrors(true) %}
+                <div class="alert">{{ error.message }}</div>
+            {% endfor %}
+            {{ form_label(areaForm.gallery) }}
+
+            <ul id="photo-gallery-list" class="collection-form"
+                data-prototype="{{ form_widget(areaForm.gallery.photos.vars.prototype)|e }}"
+                data-widget-tags="{{ '<li></li>'|e }}"
+                data-widget-counter="{{ areaForm.gallery.photos | length }}">
+                {% for photoField in areaForm.gallery.photos %}
+                    <li class="existantPhotos">
+                        {# ici le .value me retourne l'entité liée au champ de formulaire (une entité Photo)#}
+                        <img src="{{ asset('uploads/'~photoField.vars.value.url) }}" alt="" width="100">
+                        {{ form_widget(photoField, {'attr': {'class': 'hidden'}}) }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button"
+                    class="add-another-collection-widget btn btn-primary btn-sm"
+                    data-list-selector="#photo-gallery-list">+</button>
+
+            {% do areaForm.gallery.setRendered %}
+
+        {#    Fin Gallery#}
+
+        {{ form_rest(areaForm) }}
+        </div>
+    </section>
+
+{% endblock content %}
+
+

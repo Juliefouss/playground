@@ -1,0 +1,57 @@
+
+<!-- ##### Post Details Area Start ##### -->
+<section class="post-news-area section-padding-100-0 mb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Post Details Content Area -->
+            <div class="col-12 col-lg-8 col-xl-9">
+                <div class="post-details-content mb-100">
+                    <div class="blog-thumbnail mb-50">
+                    </div>
+                    <div class="blog-content">
+                        <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
+                        <h4 class="post-title">{{ area.name }}</h4>
+                        <div class="blog-thumbnail mb-50">
+                            {% for photo in area.gallery.photos %}
+                            <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="">
+                            {% endfor %}
+                        </div>
+                        <div class="playground">
+                            <div class="col col-4-12"><h6>Adresse du site:</h6></div>
+                            <div class="col col-8-12 last">{{ area.adress}}</div>
+                        </div>
+                        <div class="clear"></div>
+
+
+                        <div class="playground">
+                            <div class="col-lg-4">
+                                <h6>Adresse du site</h6>
+                            </div>
+                            <div class="col-lg-8">
+                                {{ area.adress }}
+                            </div>
+                        </div>
+                        <p>{{ area.postalcode}}</p>
+                       <p>Ville : {{ area.ville}}</p>
+                        <p>Description : {{ area.decription }}</p>
+                        <p>Cette plaine de jeux est destinée à des enfants agés entre 0 et 3 ans ? {{ area.age1 }}</p>
+                        <p>Cette plaine de jeux est destinée à des enfants agés entre 3 et 6 ans ? {{ area.age2 }}</p>
+                        <p>Cette plaine de jeux est destinée à des enfants agés entre 6 et 10 ans ? {{ area.age3 }}</p>
+                        <p>Cette plaine de jeux est destinée à des enfants agés de plus de 10 ans ? {{ area.age4 }}</p>
+                        <p>Y a t'il un accès PMR? {{ area.pmr}}</p>
+                        <p> Présence de restaurant? {{ area.restaurant}}</p>
+                        <p> Possibilité de pique niquer sur place? {{ area.picnic}}</p>
+                        <p> Autres activités? {{ area.otheractivites}}</p>
+                        <p> L'adresse web : {{ area.website}}</p>
+                        <p> L'accès est il payant ou gratuit ? {{ area.access}}</p>
+                        <p> Présence de parking ?{{ area.parking}}</p>
+                        <a class="green-color" href="{{ url('view_area', {slug: area.slug}) }} ">En savoir plus </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

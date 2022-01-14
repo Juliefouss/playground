@@ -1,0 +1,84 @@
+{% extends 'layout/playarea.html.twig' %}
+
+{% block content %}
+    <!-- ##### Catagory Area Start ##### -->
+    <div class="post-catagory section-padding-100-0 mb-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Single Post Catagory -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        <img src={{ asset("img/bg-img/4.jpg")}} >
+                        <!-- Content -->
+
+                    </div>
+                </div>
+
+                <!-- Single Post Catagory -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        <img src={{ asset("img/bg-img/5.jpg")}} >
+                        <!-- Content -->
+
+                    </div>
+                </div>
+
+                <!-- Single Post Catagory -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-catagory mb-30">
+                        <img src={{ asset("img/bg-img/6.jpg") }}>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Catagory Area End ##### -->
+
+    <!-- ##### Big Posts Area Start ##### -->
+    <div class="big-posts-area mb-50">
+        <div class="container">
+            <!-- Single Big Post Area -->
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="big-post-thumbnail mb-50">
+                        <img src={{ asset ("img/bg-img/7.jpg")}} >
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="big-post-content text-center mb-50">
+                        <h2>Bienvenue</h2>
+                        <p>Bienvenue sur notre site.<br>Ici, vous pourrez trouver toutes sortes de plaines de jeux pour occuper vos temps libres avec vos enfants ou ceux des autres .
+                            <br>N'hésitez pas à utiliser les différents filtres afin de trouver l'espace de jeux qui correspond le plus à vos attentes.<br>
+                            Bonne recherche et surtout amusez vous bien :)
+                        </p>
+                        <a href="{{ asset('search') }}" class="btn bueno-btn">Faire une recherche</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Big Post Area -->
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="big-post-content text-center mb-50">
+                        <h2>S'inscrire </h2>
+                        <p>Faire partie de notre communauté permet à chacun de consulter les avis des autres personnes sur les différents espaces de jeux.<br>
+                            Il est tout à fait possible, une fois enregistré et connecté de laisser un commentaire en dessous de la plaine de jeux afin d'aider les prochains utilisateurs dans leur recherche.<br>
+                            Si on veut que ce site évolue et étoffe ces propositions, nous vous invitons à nous soumettre un nouvel espace de jeux via le formulaire de contact  <br>
+                            Alors n'hésitez plus et rejoignez nous !
+                        </p>
+                        <a href="{{ url('app_login') }}" class="btn bueno-btn">Inscription</a>
+                        <a href="{{ url('contact') }}" class="btn bueno-btn"> Contactez-nous</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="big-post-thumbnail mb-50">
+                        <img src={{ asset("img/bg-img/8.jpg")}} >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Big Posts Area End ##### -->
+
+    <!-- ##### Posts Area End ##### -->
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'layout/playarea.html.twig' %}
+{% block content %}
+
+    <section class="contact-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 col-xl-9">
+                    <div class="contact-content mb-100">
+                        <h4 class="mb-50 green-color">Envoyer un message</h4>
+                        <p>Une question, une remarque ou autre <br> Envois nous un message  </p>
+
+                        {{ form (contactForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}
