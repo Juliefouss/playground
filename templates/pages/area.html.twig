@@ -9,37 +9,209 @@
                 <!-- Post Details Content Area -->
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
-                        <div class="blog-thumbnail mb-50">
+                        <div class="big-post-thumbnail mb-50 ">
                             <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
-                            {% for photo in area.gallery.photos %}
-                                <div class="about-img">
-                                    <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img src="{{ asset('uploads/'~photo.url) }}" alt="" class="img-responsive"></a>
-                                </div>
-                            {% endfor %}
-
+                            <h2 class="align-center green-color"> {{ area.name }} </h2>
+                            <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="border-julie">
                         </div>
                         <div class="blog-content">
-                            <a href="#" class="post-title">{{ area.name }} </a>
 
-                            <p> Adress du site : {{ area.adress }}</p>
-                            {# <p>{{ area.postalcode}}</p> #}
-                            <p>Ville : {{ area.ville }}</p>
-                            <p>Description : {{ area.decription }}</p>
-                            <p>Cette plaine de jeux est destinée à des enfants agés entre 0 et 3 ans ? {{ area.age1 }}</p>
-                            <p>Cette plaine de jeux est destinée à des enfants agés entre 3 et 6 ans ? {{ area.age2 }}</p>
-                            <p>Cette plaine de jeux est destinée à des enfants agés entre 6 et 10 ans ? {{ area.age3 }}</p>
-                            <p>Cette plaine de jeux est destinée à des enfants agés de plus de 10 ans ? {{ area.age4 }}</p>
-                            <p>Y a t'il un accès PMR? {{ area.pmr }}</p>
-                            <p> Présence de restaurant? {{ area.restaurant }}</p>
-                            <p> Possibilité de pique niquer sur place? {{ area.picnic }}</p>
-                            {# <p> Autres activités? {{ area.otheractivites}}</p> #}
-                            <p> L'adresse web : {{ area.website }}</p>
-                            <p> L'accès est il payant ou gratuit ? {{ area.access }}</p>
-                            <p> Présence de parking ?{{ area.parking }}</p>
+                                    <h4 class="green-color">Description :</h4> <p class="black-color">{{ area.decription }}</p>
+                           <div class="row align-items-center border-julie2 ">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Adress du site :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ area.adress }}</p>
+                                </div>
+                            </div>
+                           </div>
+
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Code postal :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.postalcode }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Ville :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.ville }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adapté pour des enfants de 0 à 3 ans ? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.age1 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adapté pour des enfants de 3 à 6 ans ? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.age2 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adapté pour des enfants de 6 à 10 ans ? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.age3 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adapté pour des enfants de plus de 10 ans ? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.age4 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Acces PMR? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.pmr }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Restauration :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.restaurant }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Possibilité de pique niquer sur place :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.picnic }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Autres activités sur place? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.otheractivites }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Accès payant ou gratuit? :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.access }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Parking disponible :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.parking }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adress du site :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.adress }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center border-julie2">
+                                <div class="col-12 col-md-6 ">
+                                    <div class="big-post-content ">
+                                        <h6 class="green-color"> Adresse internet du site :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="big-post-content">
+                                        <a href="" class="black-color">{{ area.website }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div>
                         {% if app.user %}
+                            <div class="col-12 col-md-6 col-lg-4 ">
+                                <div class="single-post-catagory border-julie space">
+                                    {% for photo in area.gallery.photos %}
+                                        <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img src="{{ asset('uploads/'~photo.url) }}" alt="" class="img-responsive"></a>
+                                    {% endfor %}
+                                </div>
+                            </div>
                         <!-- Comment Area Start -->
                         <div class="comment_area clearfix mb-100">
                             <h4 class="mb-50">Commentaires</h4>

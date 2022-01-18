@@ -63,6 +63,15 @@
             <div class="sidebar-heading">
                 Addons
             </div>
+            <div class="top-search-area">
+
+                {% set searchForm = getSearchForm() %}
+                {{ form_start (searchForm) }}
+                {{ form_widget (searchForm.keyword) }}
+                {{ form_widget (searchForm.submit, {label_html: true, label:'<i class="fa fa-search green-color"></i>'}) }}
+                {{ form_end (searchForm) }}
+
+            </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo"
@@ -74,7 +83,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="{{ url('create-new-a') }}">Créer</a>
-                        <a class="collapse-item" href="">Editer</a>
+
+{#                        <a class="collapse-item" href="{{ url('edit-a', {id: area.id }) }}">Editer</a>#}
                     </div>
                 </div>
             </li>

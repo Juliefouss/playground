@@ -10,6 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=AreaRepository::class)
+ * @method getUser()
  */
 class Area
 {
@@ -373,6 +374,7 @@ public function setAge4(string $age4): self
 
     return $this;
 }
+
 
 
 }

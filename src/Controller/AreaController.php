@@ -37,7 +37,7 @@ class AreaController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('view_area', ['slug' => $area->getSlug()]);
         }
-        return $this-> render('pages/area.html.twig', ['area'=>$area, 'commentForm'=>$commentForm->createView()]);
+        return $this-> render('pages/area.html.twig', ['area'=>$area,'commentForm'=>$commentForm->createView()]);
     }
     /**
      * @Route ("/create-new-a" , name="create-new-a")
@@ -62,18 +62,12 @@ class AreaController extends AbstractController
         return $this ->render ('pages/admin/create-new-a.html.twig', ['areaForm' => $form->createView()]);
     }
 
-
     /**
-     * @Route("/edit-a/{id<\d+>}", name="edit_area")
+     * @Route("/edit-a/{id<\d+>}", name="edit-a")
      */
     public function editA(int $id, PhotoUploader $photoUploader, Request $request, AreaRepository $areaRepository, EntityManagerInterface $em): Response
     {
-        $user = $this->getUser();
         $area = $areaRepository->find($id);
-
-        if ($area->getUser() !== $user) {
-            throw new AccessDeniedException();
-        }
         $form = $this->createForm(AreaType::class, $area);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -90,7 +84,7 @@ class AreaController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('view_area', ['slug' => $area->getSlug()]);
         }
-        return $this->render('pages/create-new-a.html.twig', ['areaForm' => $form->createView()]);
+        return $this->render('pages/admin/create-new-a.html.twig', ['areaForm' => $form->createView()]);
 
     }
 

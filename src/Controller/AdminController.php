@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Form\CommentAdminType;
+use App\Form\CommentType;
+use App\Repository\AreaRepository;
 use App\Repository\CommentFlagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController

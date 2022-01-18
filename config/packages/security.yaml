@@ -37,7 +37,8 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/create-new-a, roles: ROLE_ADMIN }
-        - { path: ^/contact, roles: ROLE_USER }
+        - { path: ^/edit-a, roles: ROLE_ADMIN }
+        - { path: ^/contact, roles: ROLE_ADMIN }
         - { path: ^/proposal, roles: ROLE_USER }
 
 
