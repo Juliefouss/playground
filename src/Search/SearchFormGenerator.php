@@ -2,7 +2,6 @@
 
 namespace App\Search;
 
-use App\Search\SearchType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Routing\RouterInterface;

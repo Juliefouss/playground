@@ -1,0 +1,48 @@
+{% extends 'layout/admin.html.twig' %}
+
+
+{% block %}
+    <div class="row">
+        <div class="container">
+            {% for area in areas %}
+
+                <!-- ##### Post Details Area Start ##### -->
+                <section class="post-news-area section-padding-100-0 mb-70">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <!-- Post Details Content Area -->
+                            <div class="col-12 col-lg-8 col-xl-9">
+                                <div class="post-details-content mb-100">
+                                    <div class="blog-thumbnail mb-50">
+                                    </div>
+                                    <div class="blog-content">
+                                        <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
+                                        <h4 class="post-title">{{ area.name }}</h4>
+                                        <div class="blog-thumbnail mb-50">
+                                            {% for photo in area.gallery.photos %}
+                                                <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="">
+                                            {% endfor %}
+                                        </div>
+                                        <div class="blog-content">
+                                            <a href="{{ url('edit-a', {id: area.id}) }}"><i class="fas fa-edit green-color"></i></a>
+                                            <h4 class="green-color">Description :</h4> <p class="black-color">{{ area.decription }}</p>
+                                            <a class="green-color" href="{{ url('view_area', {slug: area.slug}) }} ">En savoir plus </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+            {% else %}
+                <h2>Désolé aucun résultat trouvé</h2>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

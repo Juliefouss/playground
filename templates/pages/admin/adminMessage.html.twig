@@ -1,0 +1,31 @@
+{% extends 'layout/admin.html.twig' %}
+
+{% block content %}
+
+    <!-- ##### Post Details Area Start ##### -->
+
+    <h1 class="h3 mb-2 text-gray-800">Nombre de messages ({{ contacts.getTotalitemCount }})</h1>
+    {# <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> #}
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        {% for contact in contacts %}
+        <div class="card-body">
+            {{ contact.name }}
+        </div>
+        {#<div class="card-body">
+            {{ contact.date }}
+        </div>#}
+        <div class="card-body">
+            {{ contact.message }}
+        </div>
+        <div class="card-body">
+            {{ contact.email }}
+        </div>
+
+        {% endfor %}
+        {{ knp_pagination_render(contacts) }}
+    </div>
+
+
+{% endblock content %}

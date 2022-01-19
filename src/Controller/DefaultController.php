@@ -13,6 +13,8 @@ use App\Form\ProposalType;
 use App\Repository\AreaRepository;
 use App\Search\Search;
 use App\Search\SearchType;
+use App\SearchFull\SearchFull;
+use App\SearchFull\SearchFullType;
 use App\Service\PhotoUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,9 +47,9 @@ class DefaultController extends AbstractController
         $result = [];
        if($form->isSubmitted() && $form->isValid()){
            $result = $areaRepository->findBySearch($search);
-
        } return $this->render('pages/search.html.twig', ['areas'=> $result]);
     }
+
 
 
     /**

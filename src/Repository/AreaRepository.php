@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Area;
 use App\Search\Search;
+use App\SearchFull\SearchFull;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -66,7 +67,6 @@ class AreaRepository extends ServiceEntityRepository
             ->setParameter('keyword','%'.$search->getKeyword().'%');
         return $qb->getQuery()->getResult();
     }
-
 
 
 }

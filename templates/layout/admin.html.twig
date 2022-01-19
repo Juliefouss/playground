@@ -83,6 +83,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="{{ url('create-new-a') }}">Créer</a>
+                        <a class="collapse-item" href="{{ url('admin-area') }}">Voir toutes les aires </a>
 
 {#                        <a class="collapse-item" href="{{ url('edit-a', {id: area.id }) }}">Editer</a>#}
                     </div>
@@ -91,7 +92,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ url('admin-message') }}">
                     <i class="fas fa-envelope"></i>
                     <span>Messages</span></a>
             </li>
