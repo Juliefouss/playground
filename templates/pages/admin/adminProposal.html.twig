@@ -1,34 +1,34 @@
-{% extends 'layout/playarea.html.twig' %}
-
+{% extends 'layout/admin.html.twig' %}
 
 {% block content %}
+
     <!-- ##### Post Details Area Start ##### -->
     <section class="post-news-area section-padding-100-0 mb-70">
         <div class="container">
-            <div class="row justify-content-center">
+            <h1 class="h3 mb-2 text-gray-800">Nombre de Propositions ({{ proposals.getTotalitemCount }})</h1>
+            <div class="row justify-content-center border-julie">
                 <!-- Post Details Content Area -->
+                {% for proposal in proposals %}
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
                         <div class="big-post-thumbnail mb-50 ">
-                            <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
-                            <h2 class="align-center green-color"> {{ area.name }} </h2>
-                            <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="border-julie">
+                            <h2 class="align-center green-color"> {{ proposal.namearea }} </h2>
                         </div>
                         <div class="blog-content">
 
-                                    <h4 class="green-color">Description :</h4> <p class="black-color">{{ area.decription }}</p>
-                           <div class="row align-items-center border-julie2 ">
-                            <div class="col-12 col-md-6">
-                                <div class="big-post-content">
-                                    <h6 class="green-color"> Adress du site :</h6>
+                            <h4 class="green-color">Description :</h4> <p class="black-color">{{ proposal.description }}</p>
+                            <div class="row align-items-center border-julie2 ">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adress du site :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ proposal.adressarea }}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="big-post-content">
-                                    <p class="black-color">{{ area.adress }}</p>
-                                </div>
-                            </div>
-                           </div>
 
                             <div class="row align-items-center border-julie2">
                                 <div class="col-12 col-md-6">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.postalcode }}</p>
+                                        <p class="black-color">{{ proposal.postalarea }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.ville }}</p>
+                                        <p class="black-color">{{ proposal.ville }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.baby }}</p>
+                                        <p class="black-color">{{ proposal.baby }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.mini }}</p>
+                                        <p class="black-color">{{ proposal.mini }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.child }}</p>
+                                        <p class="black-color">{{ proposal.child }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.junior }}</p>
+                                        <p class="black-color">{{ proposal.junior }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.pmr }}</p>
+                                        <p class="black-color">{{ proposal.pmr }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.restaurant }}</p>
+                                        <p class="black-color">{{ proposal.restaurant }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.picnic }}</p>
+                                        <p class="black-color">{{ proposal.picnic }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.otheractivites }}</p>
+                                        <p class="black-color">{{ proposal.otheractivites }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.access }}</p>
+                                        <p class="black-color">{{ proposal.access }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -172,19 +172,7 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="big-post-content">
-                                        <p class="black-color">{{ area.parking }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Adress du site :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ area.adress }}</p>
+                                        <p class="black-color">{{ proposal.parking }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,64 +184,19 @@
                                 </div>
                                 <div class="col-12 col-md-6 ">
                                     <div class="big-post-content">
-                                        <a href="" class="black-color">{{ area.website }}</a>
+                                        <a href="" class="black-color">{{ proposal.website }}</a>
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
-                    </div>
-                    <div>
-                        {% if app.user %}
-                            <div class="col-12 col-md-6 col-lg-4 ">
-                                <div class="single-post-catagory border-julie space">
-                                    {% for photo in area.gallery.photos %}
-                                        <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img src="{{ asset('uploads/'~photo.url) }}" alt="" class="img-responsive"></a>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        <!-- Comment Area Start -->
-                        <div class="comment_area clearfix mb-100">
-                            <h4 class="mb-50">Commentaires</h4>
-                            {% for comment in area.comments %}
-
-                                    <!-- Single Comment Area -->
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content d-flex">
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta">
-                                                <div class="d-flex">
-                                                    <p class="green-color author ">{{ comment.author.name }}</p>
-                                                    <p class="green-color date">{{ comment.date |date("F jS \\a\\t g:ia") }}</p>
-                                                    <a href="{{ path('reportComment', {id:comment.id}) }}" class="flag"><i class="fa fa-flag "></i></a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <p>{{ comment.content }}</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                            {% endfor %}
-                        </div>
-
-                        <div class="post-a-comment-area mb-30 clearfix">
-                            <h4 class="mb-50">Ajouter un commentaire</h4>
-
-                            <!-- Reply Form -->
-                            <div class="contact-form-area">
-
-                                {{ form (commentForm) }}
-
-                            </div>
-                        </div>
-                        {% endif %}
+                        {{ knp_pagination_render(proposals) }}
                     </div>
                 </div>
+                {% endfor %}
 
             </div>
+
         </div>
     </section>
 
-{% endblock %}
+{% endblock content %}

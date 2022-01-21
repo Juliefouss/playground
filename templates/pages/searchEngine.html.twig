@@ -1,0 +1,81 @@
+{% extends 'layout/playarea.html.twig' %}
+
+{% block content %}
+    <div class="bueno-search-area section-padding-100-0 pb-70 bg-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form>
+                        <div class="row">
+                            {% set searchUserForm = getSearchUserForm () %}
+
+                            {{ form_start (searchUserForm) }}
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                    <h6>Nom de la plaine de jeux</h6>
+                                    {{ form_widget (searchUserForm.name) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                    <h6>Nom de la ville</h6>
+                                    {{ form_widget (searchUserForm.ville) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                        <h6>Code Postal</h6>
+                                    {{ form_widget (searchUserForm.postalcode) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                    <h6>Enfant de 0 à 3 ans?</h6>
+                                    {{ form_widget (searchUserForm.baby) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                    <h6>Enfant de 3 à 6 ans?</h6>
+                                    {{ form_widget (searchUserForm.mini) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                    <h6>Enfant de 6 à 10 ans?</h6>
+                                    {{ form_widget (searchUserForm.child) }}
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="form-group mb-30">
+                                    <h6>Enfant de 10 ans et +?</h6>
+                                    {{ form_widget (searchUserForm.junior) }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_widget (searchUserForm.Submit, {label_html: true, label:'<i class="fas fa-search-location green-color">CHERCHER</i>'}) }}
+                        {{ form_end (searchUserForm) }}
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bueno-search-area section-padding-100-0 pb-70 bg-img">
+        <div class="row">
+            <div class="container">
+                {% for area in areas %}
+
+                    {% include 'include/area-tile.html.twig' %}
+
+                {% else %}
+                    <h5>Désolé aucun résultat trouvé</h5>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

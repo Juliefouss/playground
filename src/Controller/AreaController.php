@@ -9,6 +9,7 @@ use App\Form\CommentType;
 use App\Repository\AreaRepository;
 use App\Service\PhotoUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +19,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AreaController extends AbstractController
 {
+
+
+    /**
+     *@Route ( "/viewArea" , name="viewArea")
+     */
+
+    public function area(AreaRepository $areaRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $areas = $areaRepository->findAll();
+        $areas = $paginator->paginate(
+            $areas,
+            $request->query->getInt('page', 1),
+            1);
+        return $this->render('pages/viewArea.html.twig', ['areas'=>$areas]);
+    }
+
 
     /**
      * @Route("/a/{slug}", name="view_area")

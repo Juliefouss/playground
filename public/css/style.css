@@ -873,10 +873,11 @@ h3 {
           right: -14px;
           content: "/"; }
 
-/* :: 7.0 Search Area CSS */
+/* :: 7.0 SearchAdmin Area CSS */
 .bueno-search-area {
   position: relative;
-  z-index: 1; }
+  z-index: 1;
+margin-top: -50px !important;}
   .bueno-search-area .form-group {
     margin-bottom: 0; }
     .bueno-search-area .form-group:focus {
@@ -1744,4 +1745,42 @@ button
 
 .space-title{
   margin-top: 150px;
+}
+
+h6{
+  color:#b0c364 !important;
+  font-size: 15px !important;
+
+}
+
+.space-julie{
+  margin-top: -170px !important;
+}
+
+h2{
+  color: #b0c364 !important;
+  font-size: 35px !important;
+  font-family: "Palatino Linotype", sans-serif !important;
+}
+
+h4{
+  font-family: "Palatino Linotype", sans-serif !important;
+}
+h5{
+  font-family: "Palatino Linotype", sans-serif !important;
+  font-size: 20px;
+}
+
+.julie{
+  width: 500px;
+  height: 320px;
+
+}
+
+.bueno-search-area{
+  margin-bottom: -100px !important;
+}
+
+.btn-primary{
+  margin-top: 0 !important;
 }

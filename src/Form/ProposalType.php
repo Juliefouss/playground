@@ -71,25 +71,25 @@ class ProposalType extends AbstractType
                         'payant'=>'payant'
                     ]
                 ])
-            ->add('age1', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 0 à 3 ans?',
+            ->add('baby', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 0 à 3 ans?',
                 'choices'=>[
                     'oui'=>'oui',
                     'non'=>'non',
                 ]
             ])
-            ->add('age2', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 3 à 6 ans?',
+            ->add('mini', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 3 à 6 ans?',
                 'choices'=>[
                     'oui'=>'oui',
                     'non'=>'non',
                 ]
             ])
-            ->add('age3', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 6 à 10 ans?',
+            ->add('child', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 6 à 10 ans?',
                 'choices'=>[
                     'oui'=>'oui',
                     'non'=>'non',
                 ]
             ])
-            ->add('age4', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 10 et plus?',
+            ->add('junior', ChoiceType::class, ['label'=>'Cela convient pour un enfant de 10 et plus?',
                 'choices'=>[
                     'oui'=>'oui',
                     'non'=>'non',

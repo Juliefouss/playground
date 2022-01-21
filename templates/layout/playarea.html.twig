@@ -40,7 +40,7 @@
                 <div class="row h-100 align-items-center justify-content-between">
 
                     <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
-                        <!-- Top Search Area -->
+                        <!-- Top SearchAdmin Area -->
                         <div class="top-search-area">
 
                                     {% set searchForm = getSearchForm() %}
@@ -87,7 +87,8 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a {% if app.request.get('route' == 'home')%} class="active " {% endif%} href="{{ url('home') }}">Accueil</a></li>
-                                    <li><a {% if app.request.get('route' == 'search')%} class="active" {% endif%}href="{{ url('search') }}">Recherche</a></li>
+                                    <li><a {% if app.request.get('route' == 'search')%} class="active" {% endif%}href="{{ url('viewArea') }}">Plaines</a></li>
+                                    <li><a {% if app.request.get('route' == 'search')%} class="active" {% endif%}href="{{ url('searchEngine') }}">Recherche</a></li>
                                     <li><a {% if app.request.get('route' == 'proposal')%} class="active" {% endif%} href="{{ url('proposal') }}">Soumettre</a></li>
                                     <li><a {% if app.request.get('route' == 'contact')%} class="active" {% endif%}href="{{ url('contact') }}">Contacter</a></li>
                                 </ul>

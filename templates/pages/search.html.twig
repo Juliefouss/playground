@@ -1,127 +1,21 @@
-{% extends 'layout/playarea.html.twig' %}
+{% extends'layout/playarea.html.twig' %}
 
 {% block content %}
-    <!-- ##### Search Area Start ##### -->
+
     <div class="bueno-search-area section-padding-100-0 pb-70 bg-img">
-        <div class="row2" style="background-image: url({{ asset("img/core-img/pattern.png") }});">
-            <div class="container">
-                <div class="col-12">
-
-                    {#<form action="#" method="post">
-                        <div class="row">
-                           #}{# <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="Nom"
-                                               placeholder="Nom de l'espace de jeux">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="Age">
-                                        <option value="">0-3 ans</option>
-                                        <option value="">3 - 6 ans</option>
-                                        <option value="">6-10 ans</option>
-                                        <option value="">10+</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="Ville">
-                                        <option value="">nom ville</option>
-                                        <option value="">nom ville</option>
-                                        <option value="">nom ville</option>
-                                        <option value="">nom ville</option>
-                                        <option value="">nom ville</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="filtres1">
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="filtres2">
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="filtres3">
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="filtres4">
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="form-group mb-30">
-                                    <select class="form-control" id="filtres5">
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                        <option value="">filtre</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-3">#}{#
-                                <div class="form-group mb-30">
-                                    <button class="btn bueno-btn w-100">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>#}
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <div class="container">
                 {% for area in areas %}
 
-                    {% include 'layout/area-tile.html.twig' %}
-
+                    {% include 'include/area-tile.html.twig' %}
 
                 {% else %}
-                    <h2>Désolé aucun résultat trouvé</h2>
+                    <h5>Désolé aucun résultat trouvé</h5>
                 {% endfor %}
             </div>
         </div>
     </div>
-    </div>
-    <!-- ##### Search Area End ##### -->
+
 
 
 {% endblock content %}

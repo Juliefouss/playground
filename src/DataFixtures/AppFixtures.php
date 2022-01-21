@@ -40,7 +40,10 @@ class AppFixtures extends Fixture
         $area1->setAdress("adresse");
         $area1->setPostalCode(1111);
         $area1->setDecription("blabla");
-        $area1->setAge(2);
+        $area1->setbaby("oui");
+        $area1->setAge2("oui");
+        $area1->setAge3("oui");
+        $area1->setjunior("oui");
         $area1->setPmr("oui");
         $area1->setRestaurant("oui");
         $area1->setPicnic("non");
@@ -56,7 +59,10 @@ class AppFixtures extends Fixture
         $area2->setAdress("adresse");
         $area2->setPostalCode(1111);
         $area2->setDecription("bloublou");
-        $area2->setAge(4);
+        $area1->setbaby("oui");
+        $area1->setmini("oui");
+        $area1->setchild("oui");
+        $area1->setjunior("oui");
         $area2->setPmr("oui");
         $area2->setRestaurant("oui");
         $area2->setPicnic("non");

@@ -1,27 +1,22 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Area;
 use App\Entity\Comment;
 use App\Entity\CommentFlag;
 use App\Entity\Contact;
 use App\Entity\Proposal;
-use App\Form\AreaType;
-use App\Form\CommentType;
 use App\Form\ContactType;
 use App\Form\ProposalType;
 use App\Repository\AreaRepository;
 use App\Search\Search;
 use App\Search\SearchType;
-use App\SearchFull\SearchFull;
-use App\SearchFull\SearchFullType;
+use App\Search\SearchUser\SearchUser;
+use App\Search\SearchUser\SearchUserType;
 use App\Service\PhotoUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -37,19 +32,34 @@ class DefaultController extends AbstractController
 
 
     /**
-     * @Route ("/search", name="search")
+     * @Route ("search" , name="search")
      */
-    public function search( Request $request, AreaRepository $areaRepository): Response
-    {
-       $search = new Search();
-       $form = $this->createForm(SearchType::class, $search);
-       $form->handleRequest($request);
-        $result = [];
-       if($form->isSubmitted() && $form->isValid()){
-           $result = $areaRepository->findBySearch($search);
-       } return $this->render('pages/search.html.twig', ['areas'=> $result]);
+
+    public function search( Request $request, AreaRepository $areaRepository): Response{
+        $search = new Search();
+        $form = $this->createForm(SearchType::class, $search);
+        $form->handleRequest($request);
+        $result=[];
+        if( $form->isSubmitted() && $form->isSubmitted()){
+            $result = $areaRepository->findBySearch($search);
+        }
+        return $this->render('pages/search.html.twig', [ 'areas'=>$result]);
     }
 
+    /**
+     * @Route ("searchEngine" , name="searchEngine")
+     */
+
+    public function searchUser( Request $request, AreaRepository $areaRepository): Response{
+         $searchUser = new SearchUser();
+         $form = $this->createForm(SearchUserType::class, $searchUser);
+         $form->handleRequest($request);
+         $result=[];
+         if( $form->isSubmitted() && $form->isSubmitted()){
+             $result = $areaRepository->findBySearchUser($searchUser);
+         }
+         return $this->render('pages/searchEngine.html.twig', [ 'areas'=>$result]);
+    }
 
 
     /**
@@ -70,7 +80,7 @@ class DefaultController extends AbstractController
             $em->persist($proposal->getGallery());
             $em->persist($proposal);
             $em->flush();
-            return new Response('Votre formulaire a bien été envoyé');
+            return $this->render ('pages/thanks.html.twig');
         }
         return $this->render('pages/proposal.html.twig', ['proposalForm' => $form->createView()]);
     }

@@ -1,0 +1,37 @@
+{% extends 'layout/playarea.html.twig' %}
+
+
+    {% block content  %}
+
+        <!-- ##### Post Details Area Start ##### -->
+        <section class="post-news-area section-padding-100-0 mb-70">
+            <div class="container">
+                <div class="row justify-content-center">
+                    {% for area in areas  %}
+                        <!-- Post Details Content Area -->
+                        <div class="col-12 col-lg-8 col-xl-9">
+                            <div class="post-details-content mb-100">
+                                <div class="blog-thumbnail mb-50">
+                                </div>
+                                <div class="blog-content space-julie">
+                                    <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
+                                    <h2 class="post-title space-title">{{ area.name }}</h2>
+                                    {% for photo in area.gallery.photos %}
+                                    <div class="julie">
+                                        <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="">
+                                        {% endfor %}
+                                    </div>
+                                    <div class="blog-content">
+                                        <h4 class="green-color">Description :</h4> <p class="black-color">{{ area.decription }}</p>
+                                        <a class="green-color" href="{{ url('view_area', {slug: area.slug}) }} ">En savoir plus </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ knp_pagination_render(areas) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+    {% endblock content %}

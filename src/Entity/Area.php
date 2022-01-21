@@ -27,6 +27,326 @@ class Area
     private $name;
 
     /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * @param mixed $adress
+     */
+    public function setAdress($adress): void
+    {
+        $this->adress = $adress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostalcode()
+    {
+        return $this->postalcode;
+    }
+
+    /**
+     * @param mixed $postalcode
+     */
+    public function setPostalcode($postalcode): void
+    {
+        $this->postalcode = $postalcode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDecription()
+    {
+        return $this->decription;
+    }
+
+    /**
+     * @param mixed $decription
+     */
+    public function setDecription($decription): void
+    {
+        $this->decription = $decription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBaby()
+    {
+        return $this->baby;
+    }
+
+    /**
+     * @param mixed $baby
+     */
+    public function setBaby($baby): void
+    {
+        $this->baby = $baby;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMini()
+    {
+        return $this->mini;
+    }
+
+    /**
+     * @param mixed $mini
+     */
+    public function setMini($mini): void
+    {
+        $this->mini = $mini;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChild()
+    {
+        return $this->child;
+    }
+
+    /**
+     * @param mixed $child
+     */
+    public function setChild($child): void
+    {
+        $this->child = $child;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJunior()
+    {
+        return $this->junior;
+    }
+
+    /**
+     * @param mixed $junior
+     */
+    public function setJunior($junior): void
+    {
+        $this->junior = $junior;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPmr()
+    {
+        return $this->pmr;
+    }
+
+    /**
+     * @param mixed $pmr
+     */
+    public function setPmr($pmr): void
+    {
+        $this->pmr = $pmr;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRestaurant()
+    {
+        return $this->restaurant;
+    }
+
+    /**
+     * @param mixed $restaurant
+     */
+    public function setRestaurant($restaurant): void
+    {
+        $this->restaurant = $restaurant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicnic()
+    {
+        return $this->picnic;
+    }
+
+    /**
+     * @param mixed $picnic
+     */
+    public function setPicnic($picnic): void
+    {
+        $this->picnic = $picnic;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOtheractivites()
+    {
+        return $this->otheractivites;
+    }
+
+    /**
+     * @param mixed $otheractivites
+     */
+    public function setOtheractivites($otheractivites): void
+    {
+        $this->otheractivites = $otheractivites;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param mixed $website
+     */
+    public function setWebsite($website): void
+    {
+        $this->website = $website;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAccess()
+    {
+        return $this->access;
+    }
+
+    /**
+     * @param mixed $access
+     */
+    public function setAccess($access): void
+    {
+        $this->access = $access;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
+     * @param mixed $gallery
+     */
+    public function setGallery($gallery): void
+    {
+        $this->gallery = $gallery;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParking()
+    {
+        return $this->parking;
+    }
+
+    /**
+     * @param mixed $parking
+     */
+    public function setParking($parking): void
+    {
+        $this->parking = $parking;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville): void
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): void
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments): void
+    {
+        $this->comments = $comments;
+    }
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $adress;
@@ -44,7 +364,24 @@ class Area
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $age1;
+    private $baby;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+
+    private $mini;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $child;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $junior;
+
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -102,278 +439,7 @@ class Area
      */
     private $comments;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $age2;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $age3;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $age4;
-
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
-
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getAdress(): ?string
-    {
-        return $this->adress;
-    }
-
-    public function setAdress(string $adress): self
-    {
-        $this->adress = $adress;
-
-        return $this;
-    }
-
-    public function getPostalCode(): ?int
-    {
-        return $this->postalcode;
-    }
-
-    public function setPostalCode(int $postalcode): self
-    {
-        $this->postalcode = $postalcode;
-
-        return $this;
-    }
-
-    public function getDecription()
-    {
-        return $this->decription;
-    }
-
-    public function setDecription($decription): self
-    {
-        $this->decription = $decription;
-
-        return $this;
-    }
-
-    public function getAge1(): ?string
-    {
-        return $this->age1;
-    }
-
-    public function setAge1(string $age1): self
-    {
-        $this->age1 = $age1;
-
-        return $this;
-    }
-
-    public function getPmr(): ?string
-    {
-        return $this->pmr;
-    }
-
-    public function setPmr(?string $pmr): self
-    {
-        $this->pmr = $pmr;
-
-        return $this;
-    }
-
-    public function getRestaurant(): ?string
-    {
-        return $this->restaurant;
-    }
-
-    public function setRestaurant(?string $restaurant): self
-    {
-        $this->restaurant = $restaurant;
-
-        return $this;
-    }
-
-    public function getPicnic(): ?string
-    {
-        return $this->picnic;
-    }
-
-    public function setPicnic(?string $picnic): self
-    {
-        $this->picnic = $picnic;
-
-        return $this;
-    }
-
-    public function getOtherActivites(): ?string
-    {
-        return $this->otheractivites;
-    }
-
-    public function setOtherActivites(?string $otheractivites): self
-    {
-        $this->otheractivites = $otheractivites;
-
-        return $this;
-    }
-
-    public function getWebsite(): ?string
-    {
-        return $this->website;
-    }
-
-    public function setWebsite(?string $website): self
-    {
-        $this->website = $website;
-
-        return $this;
-    }
-
-    public function getAccess(): ?string
-    {
-        return $this->access;
-    }
-
-    public function setAccess(?string $access): self
-    {
-        $this->access = $access;
-
-        return $this;
-    }
-
-    public function getGallery(): ?Gallery
-    {
-        return $this->gallery;
-    }
-
-    public function setGallery(?Gallery $gallery): self
-    {
-        $this->gallery = $gallery;
-
-        return $this;
-    }
-
-    public function getParking(): ?string
-    {
-        return $this->parking;
-    }
-
-    public function setParking(?string $parking): self
-    {
-        $this->parking = $parking;
-
-        return $this;
-    }
-
-public function getVille(): ?string
-{
-    return $this->ville;
-}
-
-public function setVille(string $ville): self
-{
-    $this->ville = $ville;
-
-    return $this;
-}
-
-
-public function getSlug(): ?string
-{
-    return $this->slug;
-}
-
-public function setSlug(string $slug): self
-{
-    $this->slug = $slug;
-
-    return $this;
-}
-
-/**
- * @return Collection|Comment[]
- */
-public function getComments(): Collection
-{
-    return $this->comments;
-}
-
-public function addComment(Comment $comment): self
-{
-    if (!$this->comments->contains($comment)) {
-        $this->comments[] = $comment;
-        $comment->setArea($this);
-    }
-
-    return $this;
-}
-
-public function removeComment(Comment $comment): self
-{
-    if ($this->comments->removeElement($comment)) {
-        // set the owning side to null (unless already changed)
-        if ($comment->getArea() === $this) {
-            $comment->setArea(null);
-        }
-    }
-
-    return $this;
-}
-
-public function getAge2(): ?string
-{
-    return $this->age2;
-}
-
-public function setAge2(string $age2): self
-{
-    $this->age2 = $age2;
-
-    return $this;
-}
-
-public function getAge3(): ?string
-{
-    return $this->age3;
-}
-
-public function setAge3(string $age3): self
-{
-    $this->age3 = $age3;
-
-    return $this;
-}
-
-public function getAge4(): ?string
-{
-    return $this->age4;
-}
-
-public function setAge4(string $age4): self
-{
-    $this->age4 = $age4;
-
-    return $this;
-}
 
 
 

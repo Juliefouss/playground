@@ -16057,7 +16057,7 @@ search:
   changes:
     - '1'
     - 5.0.0
-  label: Search
+  label: SearchAdmin
   search:
     terms:
       - bigger
@@ -16073,7 +16073,7 @@ search:
 search-dollar:
   changes:
     - 5.3.0
-  label: Search Dollar
+  label: SearchAdmin Dollar
   search:
     terms:
       - bigger
@@ -16090,7 +16090,7 @@ search-dollar:
 search-location:
   changes:
     - 5.3.0
-  label: Search Location
+  label: SearchAdmin Location
   search:
     terms:
       - bigger
@@ -16108,7 +16108,7 @@ search-minus:
     - '1'
     - 5.0.0
     - 5.0.13
-  label: Search Minus
+  label: SearchAdmin Minus
   search:
     terms:
       - minify
@@ -16124,7 +16124,7 @@ search-plus:
   changes:
     - '1'
     - 5.0.0
-  label: Search Plus
+  label: SearchAdmin Plus
   search:
     terms:
       - bigger

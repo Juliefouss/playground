@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Area;
 use App\Search\Search;
-use App\SearchFull\SearchFull;
+use App\Search\SearchUser\SearchUser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,7 +23,8 @@ class AreaRepository extends ServiceEntityRepository
     }
 
 
-    public function findById($id): Area{
+    public function findById($id): Area
+    {
         $qb = $this->createQueryBuilder('a')
             ->where('a.id=:id')
             ->setParameter('id', $id);
@@ -64,10 +65,46 @@ class AreaRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('a')
             ->where('a.name LIKE :keyword')
             ->orWhere('a.ville LIKE :keyword')
-            ->setParameter('keyword','%'.$search->getKeyword().'%');
+            ->orWhere('a.decription LIKE :keyword')
+            ->setParameter('keyword', '%' . $search->getKeyword() . '%');
         return $qb->getQuery()->getResult();
     }
 
+    public function findBySearchUser(SearchUser $searchUser)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->where('b.name LIKE :name')
+            ->setParameter('name', '%' . $searchUser->getName() . '%');
 
+        if ($searchUser->getVille()) {
+            $qb->andWhere('b.ville = :ville')
+                ->setParameter('ville', $searchUser->getVille());
+        }
+        if ($searchUser->getPostalcode()){
+            $qb->andWhere('b.postalcode = :postalcode')
+                ->setParameter('postalcode', $searchUser->getPostalcode());
+        }
+
+        if ($searchUser->getbaby()){
+            $qb->andWhere('b.baby = :baby')
+                ->setParameter('baby', $searchUser->getbaby());
+        }
+
+        if ($searchUser->getmini()){
+            $qb->andWhere('b.mini = :mini')
+                ->setParameter('mini', $searchUser->getmini());
+        }
+        if ($searchUser->getChild()){
+            $qb->andWhere('b.child = :child')
+                ->setParameter('child', $searchUser->getchild());
+        }
+        if ($searchUser->getJunior()){
+            $qb->andWhere('b.junior = :junior')
+                ->setParameter('junior', $searchUser->getJunior());
+        }
+        return $qb->getQuery()->getResult();
+
+    }
 }
+
 

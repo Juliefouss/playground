@@ -1,11 +1,10 @@
 {% extends 'layout/admin.html.twig' %}
 
 
-{% block %}
+{% block content %}
     <div class="row">
         <div class="container">
             {% for area in areas %}
-
                 <!-- ##### Post Details Area Start ##### -->
                 <section class="post-news-area section-padding-100-0 mb-70">
                     <div class="container">
@@ -36,13 +35,9 @@
                     </div>
                 </section>
 
-
-
-
             {% else %}
                 <h2>Désolé aucun résultat trouvé</h2>
             {% endfor %}
         </div>
     </div>
-
-{% endblock %}
+{% endblock content %}

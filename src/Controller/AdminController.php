@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Form\CommentAdminType;
-use App\Form\CommentType;
 use App\Repository\AreaRepository;
 use App\Repository\CommentFlagRepository;
 use App\Repository\ContactRepository;
+use App\Repository\ProposalRepository;
+use App\Search\admin\SearchAdmin;
+use App\Search\admin\SearchAdminType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -35,7 +37,7 @@ class AdminController extends AbstractController
         $areas = $areaRepository->findAll();
         $areas = $paginator->paginate(
             $areas,
-            $request->query->getInt('pages', 1),
+            $request->query->getInt('page', 1),
             1);
         return $this->render('pages/admin/admin-area.html.twig', ['areas'=>$areas]);
     }
@@ -51,6 +53,19 @@ class AdminController extends AbstractController
             $request->query->getInt('pages', 1),5
         );
         return $this->render('pages/admin/adminMessage.html.twig', ['contacts'=>$contacts]);
+    }
+
+    /**
+     * @Route ("adminProposal" , name="admin-proposal")
+     */
+
+    public function proposals (ProposalRepository $proposalRepository, PaginatorInterface $paginator, Request $request):Response{
+        $proposals = $proposalRepository->findAll();
+        $proposals = $paginator->paginate(
+            $proposals,
+            $request->query->getInt('pages', 1),1
+        );
+        return $this->render('pages/admin/adminProposal.html.twig', ['proposals'=>$proposals]);
     }
 
     /**
@@ -81,6 +96,23 @@ class AdminController extends AbstractController
 
         }
         return $this->render('pages/admin/reported-comment.html.twig', ['comment'=>$comment, 'form'=>$form->createView()]);
+    }
+
+
+    /**
+     * @Route ("searchAdmin", name="search-Admin")
+     */
+
+    public function searchAdmin( Request $request, AreaRepository $areaRepository): Response{
+        $searchAdmin = new SearchAdmin();
+        $form =$this->createForm(SearchAdminType::class, $searchAdmin);
+        $form->handleRequest($request);
+        $result=[];
+        if ($form->isSubmitted() && $form->isValid()){
+            $result = $areaRepository->findBySearch($searchAdmin);
+        }
+        return $this->render('pages/admin/searchAdmin.html.twig', ['areas'=>$result]);
+
     }
 
 }

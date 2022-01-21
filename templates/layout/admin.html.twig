@@ -65,11 +65,11 @@
             </div>
             <div class="top-search-area">
 
-                {% set searchForm = getSearchForm() %}
-                {{ form_start (searchForm) }}
-                {{ form_widget (searchForm.keyword) }}
-                {{ form_widget (searchForm.submit, {label_html: true, label:'<i class="fa fa-search green-color"></i>'}) }}
-                {{ form_end (searchForm) }}
+                {% set searchAdminForm = getSearchAdminForm() %}
+                {{ form_start (searchAdminForm) }}
+                {{ form_widget (searchAdminForm.keyword) }}
+                {{ form_widget (searchAdminForm.submit, {label_html: true, label:'<i class="fa fa-search green-color"></i>'}) }}
+                {{ form_end (searchAdminForm) }}
 
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
@@ -95,6 +95,12 @@
                 <a class="nav-link" href="{{ url('admin-message') }}">
                     <i class="fas fa-envelope"></i>
                     <span>Messages</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('admin-proposal') }}">
+                    <i class="fas fa-shapes"></i>
+                    <span>Propositions</span></a>
             </li>
 
             <li class="nav-item">

@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Search;
+namespace App\Search\admin;
 
-class Search
+use App\Search\Search;
+
+class SearchAdmin extends Search
 {
- private string $keyword;
+
+    private string $keyword;
+
     /**
      * @return string
      */
@@ -20,5 +24,6 @@ class Search
     {
         $this->keyword = $keyword;
     }
+
 
 }
