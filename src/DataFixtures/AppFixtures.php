@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+
+    /* Toute cette classe est créer pour remplir la base de données avec des données toute faites*/
     private $encoder;
 
     public function __construct(UserPasswordEncoderInterface $encoder)
@@ -41,8 +43,8 @@ class AppFixtures extends Fixture
         $area1->setPostalCode(1111);
         $area1->setDecription("blabla");
         $area1->setbaby("oui");
-        $area1->setAge2("oui");
-        $area1->setAge3("oui");
+        $area1->setMini("oui");
+        $area1->setChild("oui");
         $area1->setjunior("oui");
         $area1->setPmr("oui");
         $area1->setRestaurant("oui");

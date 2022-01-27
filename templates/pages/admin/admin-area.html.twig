@@ -1,4 +1,5 @@
 {% extends 'layout/admin.html.twig' %}
+{#Etendre le layout admin pour avoir toute la css et js nécessaire ainsi que la structure de base#}
 
 
 {% block content  %}
@@ -7,28 +8,27 @@
     <section class="post-news-area section-padding-100-0 mb-70">
         <div class="container">
             <div class="row justify-content-center">
+{#                une boucle pour afficher l'aire de jeux parmis toutes les aires de jeux #}
                 {% for area in areas  %}
                 <!-- Post Details Content Area -->
+{#                Pour afficher le nombre de plaines de jeux totale#}
                     <h2>Nombre de plaine de jeux ({{ areas.getTotalItemCount }})</h2>
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
-                        <div class="blog-thumbnail mb-50">
-                        </div>
                         <div class="blog-content">
                             <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
                             <h4 class="post-title space-title">{{ area.name }}</h4>
                             <div class="blog-thumbnail mb-50">
-                                {% for photo in area.gallery.photos %}
                                     <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="">
-                                {% endfor %}
                             </div>
                             <div class="blog-content">
                                 <a href="{{ url('edit-a', {id: area.id}) }}"><i class="far fa-edit green-color"></i></a>
+                                <a href="{{ url('delete_a', {id: area.id}) }}"><i class="far fa-trash-alt green-color"></i></a>
                                 <h4 class="green-color">Description :</h4> <p class="black-color">{{ area.decription }}</p>
                                 <a class="green-color" href="{{ url('view_area', {slug: area.slug}) }} ">En savoir plus </a>
-                            </div>
                         </div>
                     </div>
+{#                        Pour faire une pagnination afin de ne pas avoir une page trop longue#}
                     {{ knp_pagination_render(areas) }}
                 </div>
                 {% endfor %}

@@ -1,4 +1,5 @@
 {% extends 'layout/playarea.html.twig' %}
+{#Etendre le layout du site  pour avoir toute la css et js nécessaire ainsi que la structure de base#}
 
 {% block content %}
 
@@ -23,6 +24,8 @@
                                 <h4 class="mb-50 green-color">Formulaire de soumission</h4>
                             </div>
                         </div>
+
+{#                        On détaille tout le formulaire pour pouvoir ajouter les lignes pour le upload de photos qui demandes des parametrages en plus que nous devons faire à la main#}
                         {{ form_start (proposalForm) }}
 
                         {{ form_row(proposalForm.name) }}
@@ -45,11 +48,11 @@
                         {{ form_row(proposalForm.junior) }}
                         {{ form_label(proposalForm.gallery) }}
                         {{ form_errors(proposalForm.gallery.photos) }}
-
                         <ul id="photo-gallery-list" class="collection-form rtes"
                             data-prototype="{{ form_widget(proposalForm.gallery.photos.vars.prototype)|e }}"
                             data-widget-tags="{{ '<li></li>'|e }}"
                             data-widget-counter="{{ proposalForm.gallery.photos | length }}">
+{#                            pour trouver les images il faut faire une boucle pour #}
                             {% for photoField in proposalForm.gallery.photos %}
                                 <li class="existantPhotos">
                                     {# ici le .value me retourne l'entité liée au champ de formulaire (une entité Photo)#}

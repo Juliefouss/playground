@@ -10,13 +10,15 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity(repositoryClass=ContactRepository::class)
  */
 class Contact
+    /* Toutes les données ci-dessous sont créer à partir du terminal et mapper avec la base de données ensuite il faut générer les setter et getter*/
+
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private  $id ;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -30,7 +32,7 @@ class Contact
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=10000)
      */
     private $message;
 
@@ -40,7 +42,8 @@ class Contact
      */
     private $email;
 
-    public function getId(): ?int
+
+    public function getId()
     {
         return $this->id;
     }

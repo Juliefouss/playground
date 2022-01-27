@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class PhotoUploader
+/* Service créer pour l'uploads d'image*/
 {
 
     private $parameterBag;

@@ -3,29 +3,53 @@
 {% block content %}
 
     <!-- ##### Post Details Area Start ##### -->
-
+{#    Cela permet de savoir combien de messages ont été laissés par les utilisateurs#}
     <h1 class="h3 mb-2 text-gray-800">Nombre de messages ({{ contacts.getTotalitemCount }})</h1>
     {# <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> #}
+    <div class="row">
+{#        Définir les colonnes avec l'intitulé de chaque colonne#}
+        <div class="col-sm-12">
+            <table class="table table-bordered dataTable" id="dataTable" role="grid"
+                   aria-describedby="dataTable_info" style="width: 100%;" width="100%" cellspacing="0">
+                <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                        colspan="1" style="width: 272px;" aria-sort="ascending"
+                        aria-label="Name: activate to sort column descending">Nom
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        style="width: 405px;" aria-label="Position: activate to sort column ascending">
+                        Message
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        style="width: 200px;" aria-label="Office: activate to sort column ascending">
+                        Email
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        style="width: 101px;" aria-label="Age: activate to sort column ascending">Date
+                    </th>
+                </tr>
+                </thead>
+                <tfoot>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        {% for contact in contacts %}
-        <div class="card-body">
-            {{ contact.name }}
+                </tfoot>
+                <tbody>
+{#                Faire une boucle pour récupérer tous les messages de contact #}
+                {% for contact in contacts %}
+{#                    Récupérer les valeurs de la base de données pour mettre dans chaque colonne correspondante#}
+                    <tr>
+                        <th rowspan="1" colspan="1">{{ contact.name }}</th>
+                        <th rowspan="1" colspan="1">{{ contact.message }}</th>
+                        <th rowspan="1" colspan="1">{{ contact.email}}</th>
+                        <th rowspan="1" colspan="1">{{ contact.date | date("Y-m-d H:i:s") }}</th>
+                        <th rowspan="1" colspan="1"><a href="{{ url('delete_m', {id:contact.id}) }}"><i class="far fa-trash-alt green-color"></i></a>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+{#            Pour mettre une pagination afin de ne pas avoir une page trop longue#}
+            {{ knp_pagination_render(contacts) }}
         </div>
-        {#<div class="card-body">
-            {{ contact.date }}
-        </div>#}
-        <div class="card-body">
-            {{ contact.message }}
-        </div>
-        <div class="card-body">
-            {{ contact.email }}
-        </div>
-
-        {% endfor %}
-        {{ knp_pagination_render(contacts) }}
     </div>
-
 
 {% endblock content %}

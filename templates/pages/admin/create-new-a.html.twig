@@ -13,6 +13,7 @@
                     </div>
                 </div>
             </div>
+{#            ici on va spécifier toutes les lignes du formulaire #}
 
             {{ form_start (areaForm) }}
 
@@ -31,11 +32,12 @@
             {{ form_row(areaForm.otheractivites) }}
             {{ form_row(areaForm.website) }}
             {{ form_row(areaForm.access) }}
+{#            Pour afficher en cas d erreur#}
             {% for error in areaForm.gallery.vars.errors.form.getErrors(true) %}
                 <div class="alert">{{ error.message }}</div>
             {% endfor %}
             {{ form_label(areaForm.gallery) }}
-
+{# ici c 'est pour pouvoir charger une photo et la mettre dans notre aire de jeux dans une liste à puce#}
             <ul id="photo-gallery-list" class="collection-form"
                 data-prototype="{{ form_widget(areaForm.gallery.photos.vars.prototype)|e }}"
                 data-widget-tags="{{ '<li></li>'|e }}"

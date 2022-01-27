@@ -12,6 +12,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity(repositoryClass=CommentRepository::class)
  */
 class Comment
+    /* Toutes les données ci-dessous sont créer à partir du terminal et mapper avec la base de données ensuite il faut générer les setter et getter*/
+
 {
     /**
      * @ORM\Id
@@ -45,7 +47,7 @@ class Comment
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=CommentFlag::class, mappedBy="comment", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=CommentFlag::class, mappedBy="comment", orphanRemoval=true, cascade={"ALL"})
      */
     private $flags;
 

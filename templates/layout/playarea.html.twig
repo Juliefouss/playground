@@ -1,4 +1,7 @@
+{#Création d'un layout destiné uniquement aux pages du site excepté celles de l'admin
+celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code#}
 {% extends 'base.html.twig' %}
+{#Etendre la base pour avoir la structure de base#}
 
 {% block stylesheets %}
     <link rel="stylesheet" href={{ asset("css/style.css") }}>
@@ -96,6 +99,7 @@
                                 <!-- Login/Register -->
                                 <div class="login-area">
                                     <a  class="small" href="{{ url('app_login') }}">Se connecter</a>
+                                    <a  class="small" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a>
                                     <a class="small" href="{{ url('register') }}">S'enregistrer</a>
                                     <a href="{{ url('admin-home') }}"><i class="fas fa-user-shield green-color"></i></a>
                                 </div>
@@ -131,8 +135,6 @@
     <!-- ##### Footer Area Start ##### -->
 
     {% block javascript %}
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
 
     <script src={{ asset("js/jquery/jquery-2.2.4.min.js") }}></script>
     <!-- Popper js -->
@@ -145,6 +147,11 @@
     <script src={{ asset ("js/active.js") }}></script>
     <!-- Form js -->
     <script src={{ asset ("js/form.js") }}></script>
+    <!-- Like  -->
+    <script src= "https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src={{ asset ('js/like.js') }}></script>
+    <script src={{ asset ('js/dislike.js') }}></script>
+
      <!--Supplément Commentflag-->
     <script src={{ asset ("js/jquery/scripts.js") }}></script>
 

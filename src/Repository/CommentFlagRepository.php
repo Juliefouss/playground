@@ -13,6 +13,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method CommentFlag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CommentFlagRepository extends ServiceEntityRepository
+    /*Les Repository sont lié à une entité c'est ici qu'il faut noter les différentes fonctions pour les querybuilder, filtres*/
+
 {
     public function __construct(ManagerRegistry $registry)
     {

@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=PhotoRepository::class)
  */
 class Photo
+    /* Toutes les données ci-dessous sont créer à partir du terminal et mapper avec la base de données ensuite il faut générer les setter et getter*/
+
 {
     /**
      * @ORM\Id

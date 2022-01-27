@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Contact;
 use App\Form\CommentAdminType;
 use App\Repository\AreaRepository;
 use App\Repository\CommentFlagRepository;
@@ -12,6 +13,7 @@ use App\Search\admin\SearchAdmin;
 use App\Search\admin\SearchAdminType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,54 +22,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
-/**
-* @Route ("/admin17", name="admin")
-*/
-    public function admin(): Response
-    {
-        return $this->render('pages/homeAdmin.html.twig');
-    }
 
-    /**
-     *@Route ( "/adminArea" , name="admin-area")
-     */
-
-    public function adminArea(AreaRepository $areaRepository, PaginatorInterface $paginator, Request $request): Response
-    {
-        $areas = $areaRepository->findAll();
-        $areas = $paginator->paginate(
-            $areas,
-            $request->query->getInt('page', 1),
-            1);
-        return $this->render('pages/admin/admin-area.html.twig', ['areas'=>$areas]);
-    }
-
-    /**
-     * @Route ("adminMessage", name="admin-message")
-     */
-
-    public function contacts(ContactRepository $contactRepository,PaginatorInterface $paginator, Request $request):Response{
-        $contacts= $contactRepository->findAll();
-        $contacts=$paginator->paginate(
-            $contacts,
-            $request->query->getInt('pages', 1),5
-        );
-        return $this->render('pages/admin/adminMessage.html.twig', ['contacts'=>$contacts]);
-    }
-
-    /**
-     * @Route ("adminProposal" , name="admin-proposal")
-     */
-
-    public function proposals (ProposalRepository $proposalRepository, PaginatorInterface $paginator, Request $request):Response{
-        $proposals = $proposalRepository->findAll();
-        $proposals = $paginator->paginate(
-            $proposals,
-            $request->query->getInt('pages', 1),1
-        );
-        return $this->render('pages/admin/adminProposal.html.twig', ['proposals'=>$proposals]);
-    }
-
+/* Route pour afficher la page d'accueil du côté Admin*/
     /**
      * @Route ( "admin1704" , name="admin-home")
      */
@@ -82,6 +38,76 @@ class AdminController extends AbstractController
         return $this->render('pages/admin/homeAdmin.html.twig', ['commentsFlagged' => $comments]);
     }
 
+
+/* Route pour voir les différentes aire de jeux et apporter des modifications*/
+    /**
+     *@Route ( "/adminArea" , name="admin-area")
+     */
+
+    public function adminArea(AreaRepository $areaRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        $areas = $areaRepository->findAll();
+        $areas = $paginator->paginate(
+            $areas,
+            $request->query->getInt('page', 1),
+            1);
+        return $this->render('pages/admin/admin-area.html.twig', ['areas'=>$areas]);
+    }
+
+/*Route pour voir les messages recus par les utilisateurs*/
+    /**
+     * @Route ("adminMessage", name="admin-message")
+     */
+
+    public function contacts(ContactRepository $contactRepository,PaginatorInterface $paginator, Request $request):Response{
+        $contacts= $contactRepository->findAll();
+        $contacts=$paginator->paginate(
+            $contacts,
+            $request->query->getInt('page', 1),5
+        );
+        return $this->render('pages/admin/adminMessage.html.twig', ['contacts'=>$contacts]);
+    }
+
+    /*Route pour voir les propositions de plaine de jeux envoyées par les utilisateurs*/
+    /**
+     * @Route ("adminProposal" , name="admin-proposal")
+     */
+
+    public function proposals (ProposalRepository $proposalRepository, PaginatorInterface $paginator, Request $request):Response{
+        $proposals = $proposalRepository->findAll();
+        $proposals = $paginator->paginate(
+            $proposals,
+            $request->query->getInt('page', 1),1
+        );
+        return $this->render('pages/admin/adminProposal.html.twig', ['proposals'=>$proposals]);
+    }
+
+    /*Route pour supprimer les propositions après lecture */
+    /**
+     * @Route ("delete-p/{id<\d+>}", name="delete_p")
+     */
+
+    public function delete( int $id, ProposalRepository $proposalRepository,EntityManagerInterface $em) : Response{
+        $proposal = $proposalRepository->findById($id);
+        $em->remove($proposal);
+        $em->flush();
+        return $this->redirectToRoute('admin-home');
+    }
+
+    /*Route pour supprimer les messagers lus*/
+    /**
+     * @Route ("delete-m/{id}" , name="delete_m")
+     */
+
+    public function remove(int $id, ContactRepository $contactRepository, EntityManagerInterface $em):Response{
+        $contact = $contactRepository->findById($id);
+        $em->remove($contact);
+        $em->flush();
+        return $this->redirectToRoute('admin-home');
+    }
+
+
+/* Route pour gérer les messages signalés */
     /**
      * @Route("admin1704/reported-comments/{id}", name="admin-homeReportedComment")
      */
@@ -98,7 +124,7 @@ class AdminController extends AbstractController
         return $this->render('pages/admin/reported-comment.html.twig', ['comment'=>$comment, 'form'=>$form->createView()]);
     }
 
-
+/* Route pour que l admin puisse faire une recherche via une barre de recherche directement dans la page d'accueil*/
     /**
      * @Route ("searchAdmin", name="search-Admin")
      */

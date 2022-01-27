@@ -21,6 +21,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+
+    /* Route de base pour tomber sur la page home*/
     /**
      * @Route ("/", name="home")
      */
@@ -30,7 +32,7 @@ class DefaultController extends AbstractController
         return $this->render('pages/home.html.twig');
     }
 
-
+/* Route pour la barre de recherche*/
     /**
      * @Route ("search" , name="search")
      */
@@ -45,7 +47,7 @@ class DefaultController extends AbstractController
         }
         return $this->render('pages/search.html.twig', [ 'areas'=>$result]);
     }
-
+/* Route pour le moteur de recherche lié à Searchuser*/
     /**
      * @Route ("searchEngine" , name="searchEngine")
      */
@@ -61,7 +63,7 @@ class DefaultController extends AbstractController
          return $this->render('pages/searchEngine.html.twig', [ 'areas'=>$result]);
     }
 
-
+/* route pour que l'utilisateur puisse proposer une nouvelle aire de jeux*/
     /**
      * @Route ("/proposal", name="proposal")
      */
@@ -85,6 +87,7 @@ class DefaultController extends AbstractController
         return $this->render('pages/proposal.html.twig', ['proposalForm' => $form->createView()]);
     }
 
+    /* Route pour que l'utilisateur puisse envoyer un message à l 'administrateur*/
     /**
      * @Route ("/contact", name="contact")
      */
@@ -103,6 +106,7 @@ class DefaultController extends AbstractController
         return $this->render('pages/contact.html.twig', ['contactForm'=>$form->createView()]);
     }
 
+    /* Route pour qu'un utilisateur puisse signalé un commentaire*/
     /**
      * @Route ("/report-comment/{id}", name="reportComment", methods={"GET"})
      */

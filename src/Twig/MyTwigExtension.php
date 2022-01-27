@@ -9,6 +9,8 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class MyTwigExtension extends AbstractExtension
+
+/* Création d'une extension Twig pour les trois différents moteur de recherches*/
 {
 
     private SearchFormGenerator $searchFormGenerator;
@@ -27,7 +29,7 @@ class MyTwigExtension extends AbstractExtension
         $this->searchUserFormGenerator = $searchUserFormGenerator;
     }
 
-
+/* Permet de créer la fonction qu'on appele dans le controlleur*/
     public function getFunctions(): array
     {
         return [

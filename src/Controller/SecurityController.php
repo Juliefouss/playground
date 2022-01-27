@@ -14,6 +14,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+
+    /* Route pour s'enregistrer comme nouvel utilisateur*/
     /**
      * @Route("/register", name="register")
      */
@@ -31,7 +33,7 @@ class SecurityController extends AbstractController
         return $this->render("security/register.html.twig", ['registerForm'=> $form->createView()]);
     }
 
-
+ /* Route pour se connecter*/
     /**
      * @Route("/login", name="app_login")
      */
@@ -51,7 +53,7 @@ class SecurityController extends AbstractController
 
 
 
-
+/* route pour se déconnecter*/
     /**
      * @Route("/logout", name="app_logout")
      */

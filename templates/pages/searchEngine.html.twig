@@ -1,4 +1,5 @@
 {% extends 'layout/playarea.html.twig' %}
+{#Etendre le layout du site  pour avoir toute la css et js nécessaire ainsi que la structure de base#}
 
 {% block content %}
     <div class="bueno-search-area section-padding-100-0 pb-70 bg-img">
@@ -7,6 +8,7 @@
                 <div class="col-12">
                     <form>
                         <div class="row">
+{#                            J'appelle ma fonction crée dans l'extension twig et je personnalise mon formulaire #}
                             {% set searchUserForm = getSearchUserForm () %}
 
                             {{ form_start (searchUserForm) }}

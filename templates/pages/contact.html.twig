@@ -1,4 +1,6 @@
 {% extends 'layout/playarea.html.twig' %}
+{#Etendre le layout du site  pour avoir toute la css et js nécessaire ainsi que la structure de base#}
+
 {% block content %}
 
     <section class="contact-area section-padding-100">
@@ -8,7 +10,7 @@
                     <div class="contact-content mb-100">
                         <h4 class="mb-50 green-color">Envoyer un message</h4>
                         <p>Une question, une remarque ou autre <br> Envois nous un message  </p>
-
+{# formulaire pour que l'utilisateur puisse envoyer un message a l'admin#}
                         {{ form (contactForm) }}
                     </div>
                 </div>

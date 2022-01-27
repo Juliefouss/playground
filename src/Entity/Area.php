@@ -2,17 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\AreaRepository;
+use App\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\AreaRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @ORM\Entity(repositoryClass=AreaRepository::class)
- * @method getUser()
+ * @ORM\Entity(repositoryClass=AreaRepository::Class)
  */
 class Area
+/* Toutes les données ci-dessous sont créer à partir du terminal et mapper avec la base de données ensuite il faut générer les setter et getter*/
 {
     /**
      * @ORM\Id
@@ -25,6 +26,109 @@ class Area
      * @ORM\Column(type="string", length=255)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adress;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $postalcode;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $decription;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $baby;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+
+    private $mini;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $child;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $junior;
+
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pmr;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $restaurant;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picnic;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $otheractivites;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $website;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $access;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Gallery::class, inversedBy="area", cascade={"persist", "remove"})
+     */
+    private $gallery;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $parking;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name"} , updatable=false)
+     */
+    private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="area", orphanRemoval=true)
+     */
+    private  $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="area")
+     */
+    private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Dislike::class, mappedBy="area")
+     */
+    private $dislikes;
 
     /**
      * @return mixed
@@ -330,117 +434,135 @@ class Area
         $this->slug = $slug;
     }
 
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->likes = new ArrayCollection();
+        $this->dislikes = new ArrayCollection();
+    }
     /**
-     * @return mixed
+     * @return Collection|Comment[]
      */
-    public function getComments()
+    public function getComments(): Collection
     {
         return $this->comments;
     }
 
-    /**
-     * @param mixed $comments
-     */
-    public function setComments($comments): void
+    public function addComment(Comment $comment): self
     {
-        $this->comments = $comments;
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setArea($this);
+        }
+
+        return $this;
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adress;
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getArea() === $this) {
+                $comment->setArea(null);
+            }
+        }
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $postalcode;
+        return $this;
+    }
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $decription;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $baby;
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+/**
+ * @return Collection|Like[]
+ */
+public function getLikes(): Collection
+{
+    return $this->likes;
+}
 
-    private $mini;
+public function addLike(Like $like): self
+{
+    if (!$this->likes->contains($like)) {
+        $this->likes[] = $like;
+        $like->setArea($this);
+    }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $child;
+    return $this;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $junior;
-
+}
 
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * Permet de savoir si une plaine de jeux a été liké par un utilisateur
+     * @param User $user
+     * @return bool
      */
-    private $pmr;
+
+
+    public function isLikedByUser(User $user): bool {
+        foreach ($this->likes as $like){
+            if($like->getUser() === $user){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+public function removeLike(Like $like): self
+{
+    if ($this->likes->removeElement($like)) {
+        // set the owning side to null (unless already changed)
+        if ($like->getArea() === $this) {
+            $like->setArea(null);
+        }
+    }
+
+    return $this;
+}
+        /**
+         * @return Collection|Dislike[]
+         */
+        public function getDislikes(): Collection
+        {
+            return $this->dislikes;
+        }
+
+        public function addDislike(Dislike $dislike): self
+        {
+            if (!$this->dislikes->contains($dislike)) {
+                $this->dislikes[] = $dislike;
+                $dislike->setArea($this);
+            }
+
+            return $this;
+        }
+
+        public function removeDislike(Dislike $dislike): self
+        {
+            if ($this->dislikes->removeElement($dislike)) {
+                // set the owning side to null (unless already changed)
+                if ($dislike->getArea() === $this) {
+                    $dislike->setArea(null);
+                }
+            }
+
+            return $this;
+        }
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * Permet de savoir si une plaine de jeux a été disliké par un utilisateur
+     * @param User $user
+     * @return bool
      */
-    private $restaurant;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picnic;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $otheractivites;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $website;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $access;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Gallery::class, inversedBy="area", cascade={"persist", "remove"})
-     */
-    private $gallery;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $parking;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ville;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name"} , updatable=false)
-     */
-    private $slug;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="area", orphanRemoval=true)
-     */
-    private $comments;
-
-
-
+    public function isDislikedByUser(User $user): bool {
+        foreach ($this->dislikes as $dislike){
+            if($dislike->getUser() === $user){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

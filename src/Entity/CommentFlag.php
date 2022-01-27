@@ -10,6 +10,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Entity(repositoryClass=CommentFlagRepository::class)
  */
 class CommentFlag
+    /* Toutes les données ci-dessous sont créer à partir du terminal et mapper avec la base de données ensuite il faut générer les setter et getter*/
+
 {
     /**
      * @ORM\Id

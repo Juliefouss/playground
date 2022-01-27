@@ -1,4 +1,4 @@
-
+{#Création d'un bout de code que je peux appeler dans différentes pages afin d'éviter la dupplication de code#}
 <!-- ##### Post Details Area Start ##### -->
 <section class="post-news-area section-padding-100-0 mb-70">
     <div class="container space-julie">
@@ -13,9 +13,7 @@
                         <h2 class="post-title">{{ area.name }}</h2>
                         <div class="blog-thumbnail mb-50">
                             <div class="julie">
-                            {% for photo in area.gallery.photos %}
                             <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="">
-                            {% endfor %}
                             </div>
                         </div>
                         <div class="blog-content">

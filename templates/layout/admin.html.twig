@@ -1,9 +1,29 @@
+{#Création d'un layout destiné uniquement au page de l'admin
+celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code#}
 {% extends 'base.html.twig' %}
+{#Etendre la base pour avoir la structure de base#}
 
 {% block stylesheets %}
     <!-- Custom fonts for this template-->
     <link href="{{ asset('/admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href={{ asset("css/style.css") }}>
+    <link rel="stylesheet" href={{ asset("css/animate.css") }}>
+    <link rel="stylesheet" href={{ asset("css/bootstrap.min.css") }}>
+    <link rel="stylesheet" href={{ asset("css/classy-nav.css") }}>
+    <link rel="stylesheet" href={{ asset("css/font-awesome.min.css") }}>
+    <link rel="stylesheet" href={{ asset("css/magnific-popup.css") }}>
+    <link rel="stylesheet" href={{ asset("css/nice-select.css") }}>
+    <link rel="stylesheet" href={{ asset("css/owl.carousel.min.css") }}>
+    <link rel="stylesheet" href={{ asset("https://use.fontawesome.com/releases/v5.7.0/css/all.css")}}>
+    <link href={{ asset("/posts/assets/css/style.css") }}>
+    <link href={{ asset("/posts/assets/vendor/animate.css/animate.min.css") }} >
+    <link href={{ asset("/posts/assets/vendor/aos/aos.css") }} >
+    <link href={{ asset("/posts/assets/vendor/bootstrap/css/bootstrap.min.css") }} >
+    <link href={{ asset("/posts/assets/vendor/bootstrap-icons/bootstrap-icons.css") }} >
+    <link href={{ asset("/posts/assets/vendor/boxicons/css/boxicons.min.css") }} >
+    <link href={{ asset("/posts/assets/vendor/glightbox/css/glightbox.min.css") }} >
+    <link href={{ asset("/posts/assets/vendor/swiper/swiper-bundle.min.css") }} >
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('/admin/css/sb-admin-2.css') }}" rel="stylesheet">
@@ -29,6 +49,9 @@
     <script src="{{ asset('/admin/js/demo/chart-pie-demo.js') }}"></script>
     <!-- Form js -->
     <script src={{ asset ("js/form.js") }}></script>
+    <!-- Like  -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src={{ asset ("js/like.js") }}></script>
 {% endblock javascripts %}
 
 {% block body %}

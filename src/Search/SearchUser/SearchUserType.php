@@ -13,11 +13,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class SearchUserType extends AbstractType
 
 {
+    /* Le formulaire pour le moteur de recherches du moteur de recherche en reprenant toutes les paramètres choisis dans l'entité SearchUser*/
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',TextareaType::class, [
+            ->add('name',TextareaType::class, [/* je peux mettre le choix dans un tableau en donnant plusieurs paramètres */
                 'label'=> false,
                 'required'=> false,
                 'attr'=> [

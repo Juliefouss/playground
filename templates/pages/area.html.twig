@@ -1,5 +1,5 @@
 {% extends 'layout/playarea.html.twig' %}
-
+{#Etendre le layout du site  pour avoir toute la css et js nécessaire ainsi que la structure de base#}
 
 {% block content %}
     <!-- ##### Post Details Area Start ##### -->
@@ -10,25 +10,48 @@
                 <div class="col-12 col-lg-8 col-xl-9">
                     <div class="post-details-content mb-100">
                         <div class="big-post-thumbnail mb-50 ">
+{#                            Pour récupérer toutes les aires de jeux via le slug#}
                             <a href="{{ url('view_area', {slug: area.slug}) }}" class=""></a>
                             <h2 class="align-center green-color"> {{ area.name }} </h2>
+{#                            Pour récupérer la première photo afin de la mettre comme photo  "couverture"#}
                             <img src="{{ asset('uploads/'~area.gallery.photos[0].url) }}" alt="" class="border-julie">
                         </div>
+{#                        Ici c'est le code pour que les utilisateurs puissent liker et disliker ! il faut utiliser le js en plus#}
                         <div class="blog-content">
 
-                                    <h4 class="green-color">Description :</h4> <p class="black-color">{{ area.decription }}</p>
-                           <div class="row align-items-center border-julie2 ">
-                            <div class="col-12 col-md-6">
-                                <div class="big-post-content">
-                                    <h6 class="green-color"> Adress du site :</h6>
+                            <a href="{{ path('area-like', {'id': area.id}) }}" class=" like btn">
+                                {% if app.user and area.isLikedByUser(app.user) %}
+                                    <i class="fas fa-thumbs-up green-color"></i><span
+                                    class="compt-like">{{ area.likes.count }}</span>
+                                {% else %}
+                                    <i class="far fa-thumbs-up green-color"></i><span
+                                    class="compt-like">{{ area.likes.count }}</span>
+                                {% endif %}
+                            </a>
+{#                            Même principe que le like mais avec une autre icone et un autre fichier js#}
+                            <a href="{{ path('area-dislike', { 'id' : area.id}) }}" class="dislike btn ">
+                                {% if app.user and area.isDislikedByUser(app.user) %}
+                                    <i class="fas fa-thumbs-down green-color"></i><span
+                                        class="count-dislike">{{ area.dislikes.count }}</span>
+                                {% else %}
+                                    <i class="far fa-thumbs-down green-color"></i><span
+                                        class="count-dislike">{{ area.dislikes.count }}</span>
+                                {% endif %}
+                            </a>
+                            <h4 class="green-color">Description :</h4>
+                            <p class="black-color">{{ area.decription }}</p>
+                            <div class="row align-items-center border-julie2 ">
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <h6 class="green-color"> Adress du site :</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="big-post-content">
+                                        <p class="black-color">{{ area.adress }}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="big-post-content">
-                                    <p class="black-color">{{ area.adress }}</p>
-                                </div>
-                            </div>
-                           </div>
 
                             <div class="row align-items-center border-julie2">
                                 <div class="col-12 col-md-6">
@@ -196,45 +219,49 @@
                                 </div>
                                 <div class="col-12 col-md-6 ">
                                     <div class="big-post-content">
-                                        <a href="" class="black-color">{{ area.website }}</a>
+                                        <a href="" class="black-color">{{ url (asset{{ area.website }}) }}</a>
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
-                    <div>
-                        {% if app.user %}
-                            <div class="col-12 col-md-6 col-lg-4 ">
-                                <div class="single-post-catagory border-julie space">
-                                    {% for photo in area.gallery.photos %}
-                                        <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img src="{{ asset('uploads/'~photo.url) }}" alt="" class="img-responsive"></a>
-                                    {% endfor %}
-                                </div>
-                            </div>
+                </div>
+                <div>
+{#                    Pour voir si il y a bien un utilisateurs connecté#}
+                    {% if app.user %}
+                    <div class="col-12 col-md-6 col-lg-4">
+{#                        Faire une boucle pour récupérer toutes les photos et les ajouter#}
+                            {% for photo in area.gallery.photos %}
+                                <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img
+                                            src="{{ asset('uploads/'~photo.url) }}" alt="" class=" border-julie"></a>
+                            {% endfor %}
+                    </div>
                         <!-- Comment Area Start -->
                         <div class="comment_area clearfix mb-100">
                             <h4 class="mb-50">Commentaires</h4>
-                            {% for comment in area.comments %}
+{#                        Une boucle pour récupérer tous les commentaires laissés sur l'aire de jeux concernée#}
+                            {% for comment in area.comments| filter (comment => comment.disabled == false) %}
 
-                                    <!-- Single Comment Area -->
-                                    <li class="single_comment_area">
-                                        <!-- Comment Content -->
-                                        <div class="comment-content d-flex">
-                                            <!-- Comment Meta -->
-                                            <div class="comment-meta">
-                                                <div class="d-flex">
-                                                    <p class="green-color author ">{{ comment.author.name }}</p>
-                                                    <p class="green-color date">{{ comment.date |date("F jS \\a\\t g:ia") }}</p>
-                                                    <a href="{{ path('reportComment', {id:comment.id}) }}" class="flag"><i class="fa fa-flag "></i></a>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <p>{{ comment.content }}</p>
+                                <!-- Single Comment Area -->
+                                <li class="single_comment_area">
+                                    <!-- Comment Content -->
+                                    <div class="comment-content d-flex">
+                                        <!-- Comment Meta -->
+                                        <div class="comment-meta">
+                                            <div class="d-flex">
+                                                <p class="green-color author ">{{ comment.author.name }}</p>
+{#                                                On choisit le format dans lequel la date doit s'afficher#}
+                                                <p class="green-color date">{{ comment.date |date("F jS \\a\\t g:ia") }}</p>
+                                                <a href="{{ path('reportComment', {id:comment.id}) }}" class="flag"><i
+                                                            class="fa fa-flag "></i></a>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>{{ comment.content }}</p>
 
-                                                </div>
                                             </div>
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
                             {% endfor %}
                         </div>
 
@@ -243,6 +270,7 @@
 
                             <!-- Reply Form -->
                             <div class="contact-form-area">
+{#                                le formulaire pour pouvoir laisser un commentaires#}
 
                                 {{ form (commentForm) }}
 
@@ -253,7 +281,6 @@
                 </div>
 
             </div>
-        </div>
     </section>
 
 {% endblock %}

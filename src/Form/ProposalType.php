@@ -63,7 +63,7 @@ class ProposalType extends AbstractType
                         'Non'=>'non',
                     ]
                 ])
-            ->add('website',UrlType::class,['label'=>"Site internet"])
+            ->add('website',UrlType::class,['label'=>"Site internet  (ne pas mettre le http)"])
             ->add('access', ChoiceType::class,['label'=>"Accès à la plaine de jeux",
 
                     'choices'=>[

@@ -5,197 +5,217 @@
     <!-- ##### Post Details Area Start ##### -->
     <section class="post-news-area section-padding-100-0 mb-70">
         <div class="container">
-            <h1 class="h3 mb-2 text-gray-800">Nombre de Propositions ({{ proposals.getTotalitemCount }})</h1>
-            <div class="row justify-content-center border-julie">
+              <div class="row justify-content-center">
+                  <div class="col-12 col-lg-8 col-xl-9">
+                      <div class="post-details-content mb-100">
+              <h1 class="h3 mb-2 text-gray-800">Nombre de Propositions ({{ proposals.getTotalitemCount }})</h1>
                 <!-- Post Details Content Area -->
                 {% for proposal in proposals %}
-                <div class="col-12 col-lg-8 col-xl-9">
-                    <div class="post-details-content mb-100">
-                        <div class="big-post-thumbnail mb-50 ">
-                            <h2 class="align-center green-color"> {{ proposal.namearea }} </h2>
-                        </div>
-                        <div class="blog-content">
-
-                            <h4 class="green-color">Description :</h4> <p class="black-color">{{ proposal.description }}</p>
-                            <div class="row align-items-center border-julie2 ">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Adress du site :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.adressarea }}</p>
-                                    </div>
+                    <div class="big-post-thumbnail mb-50 ">
+                        <a href="{{ url('delete_p', {id: proposal.id}) }}"><i class="far fa-trash-alt green-color"></i></a>
+                        <h2 class="align-center green-color"> {{ proposal.namearea }} </h2>
+                        <img src="{{ asset('uploads/'~proposal.gallery.photos[0].url) }}" alt="" class="border-julie">
+                    </div>
+                    <div class="blog-content">
+                        <h4 class="green-color">Description :</h4> <p class="black-color">{{ proposal.description }}</p>
+                        <div class="row align-items-center border-julie2 ">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Adress du site :</h6>
                                 </div>
                             </div>
-
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Code postal :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.postalarea }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Ville :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.ville }}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Adapté pour des enfants de 0 à 3 ans ? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.baby }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Adapté pour des enfants de 3 à 6 ans ? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.mini }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Adapté pour des enfants de 6 à 10 ans ? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.child }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Adapté pour des enfants de plus de 10 ans ? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.junior }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Acces PMR? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.pmr }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Restauration :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.restaurant }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Possibilité de pique niquer sur place :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.picnic }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Autres activités sur place? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.otheractivites }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Accès payant ou gratuit? :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.access }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <h6 class="green-color"> Parking disponible :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="big-post-content">
-                                        <p class="black-color">{{ proposal.parking }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center border-julie2">
-                                <div class="col-12 col-md-6 ">
-                                    <div class="big-post-content ">
-                                        <h6 class="green-color"> Adresse internet du site :</h6>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 ">
-                                    <div class="big-post-content">
-                                        <a href="" class="black-color">{{ proposal.website }}</a>
-                                    </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.adressarea }}</p>
                                 </div>
                             </div>
                         </div>
-                        {{ knp_pagination_render(proposals) }}
+
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Code postal :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.postalarea }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Ville :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.ville }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Adapté pour des enfants de 0 à 3 ans ? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.baby }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Adapté pour des enfants de 3 à 6 ans ? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.mini }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Adapté pour des enfants de 6 à 10 ans ? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.child }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Adapté pour des enfants de plus de 10 ans ? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.junior }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Acces PMR? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.pmr }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Restauration :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.restaurant }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Possibilité de pique niquer sur place :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.picnic }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Autres activités sur place? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.otheractivites }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Accès payant ou gratuit? :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.access }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Parking disponible :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.parking }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <h6 class="green-color"> Accès :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="big-post-content">
+                                    <p class="black-color">{{ proposal.access }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center border-julie2">
+                            <div class="col-12 col-md-6 ">
+                                <div class="big-post-content ">
+                                    <h6 class="green-color"> Adresse internet du site :</h6>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 ">
+                                <div class="big-post-content">
+                                    <a href="" class="black-color">{{ proposal.website }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 ">
+                        <div class="single-post-catagory border-julie">
+                            {% for photo in proposal.gallery.photos %}
+                                <a href="{{ asset('uploads/'~photo.url) }}" data-rel="prettyPhoto[gal]"><img src="{{ asset('uploads/'~photo.url) }}" alt="" class="img-responsive"></a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
+                      {{ knp_pagination_render(proposals) }}
 
-            </div>
-
+                      </div>
+                      </div>
+              </div>
         </div>
     </section>
 

@@ -4,8 +4,9 @@ namespace App\Search\SearchUser;
 
 
 class SearchUser
+/* On va spécifier la recherche parmis les différentes lignes de la base de données*/
 {
-    private ?string $name = null;
+    private ?string $name = null; /* On doit mettre que la valeur va retournée un string ou null*/
     private ?string $ville = null;
     private ?int $postalcode = null;
     private ?string  $baby;

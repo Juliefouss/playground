@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Proposal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -18,6 +19,16 @@ class ProposalRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Proposal::class);
     }
+
+    /* Pour retrouver l'id de la proposition */
+    public function findById(int $id): Proposal
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.id=:id')
+            ->setParameter('id',$id);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+}
 
     // /**
     //  * @return Proposal[] Returns an array of Proposal objects
@@ -47,4 +58,5 @@ class ProposalRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+
+

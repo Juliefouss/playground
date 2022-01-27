@@ -1,4 +1,7 @@
 {% extends 'layout/playarea.html.twig' %}
+{#Etendre le layout du site  pour avoir toute la css et js nécessaire ainsi que la structure de base
+Ceci est une  page créer pour gérer la connection de l'utilisateur/Admin#}
+
 
 {% block title %}Log in!{% endblock %}
 
@@ -24,7 +27,7 @@
                             <label for="inputEmail">Email</label>
                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
                                    class="form-control" autocomplete="email" required autofocus>
-                            <label for="inputPassword">Password</label>
+                            <label for="inputPassword">Mot de passe</label>
                             <input type="password" name="password" id="inputPassword" class="form-control"
                                    autocomplete="current-password" required>
 
@@ -32,19 +35,8 @@
                                    value="{{ csrf_token('authenticate') }}"
                             >
 
-                            {#
-                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                            See https://symfony.com/doc/current/security/remember_me.html
-
-                            <div class="checkbox mb-3">
-                                <label>
-                                    <input type="checkbox" name="_remember_me"> Remember me
-                                </label>
-                            </div>
-                            #}
-
-                            <button class="btn btn-lg btn-primary" type="submit">
-                                Sign in
+                            <button class="btn btn-lg btn-primary " type="submit">
+                                Se connecter
                             </button>
                         </form>
                     </div>

@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SearchAdminType extends AbstractType
+
+/* c'est le formulaire pour la berre de recherche de l'admin qui reprend seulement le keyword de l'entité Il doit étendre AbstractType*/
 {
 
 public function buildForm(FormBuilderInterface $builder, array $options)

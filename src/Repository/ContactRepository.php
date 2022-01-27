@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Contact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,10 +14,20 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Contact[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ContactRepository extends ServiceEntityRepository
+    /*Les Repository sont lié à une entité c'est ici qu'il faut noter les différentes fonctions pour les querybuilder, filtres*/
+
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Contact::class);
+    }
+
+    public function findById($id): Contact
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.id=:id')
+            ->setParameter('id', $id);
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     // /**
@@ -47,4 +58,5 @@ class ContactRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

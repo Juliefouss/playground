@@ -15,6 +15,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Area[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class AreaRepository extends ServiceEntityRepository
+    /*Les Repository sont lié à une entité c'est ici qu'il faut noter les différentes fonctions pour les querybuilder, filtres*/
+
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -22,7 +24,7 @@ class AreaRepository extends ServiceEntityRepository
 
     }
 
-
+/* Pour retrouver une aire de jeux via son id*/
     public function findById($id): Area
     {
         $qb = $this->createQueryBuilder('a')
@@ -60,6 +62,8 @@ class AreaRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /* Pour faire les filtre pour la barre de recherche*/
     public function findBySearch(Search $search)
     {
         $qb = $this->createQueryBuilder('a')
@@ -70,6 +74,7 @@ class AreaRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /* Pour faire les filtre pour le moteur de recherche */
     public function findBySearchUser(SearchUser $searchUser)
     {
         $qb = $this->createQueryBuilder('b')

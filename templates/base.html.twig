@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+{#Document de base pour créer l'ensemble des layout et des pages du site Il reprend la structure de base de Symfony#}
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -9,11 +10,12 @@
         {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
 
-    {% block javascripts %}
-        {#{{ encore_entry_script_tags('app') }}#}
-    {% endblock %}
 </head>
 <body>
 {% block body %}{% endblock %}
+
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('app') }}#}
+{% endblock %}
 </body>
 </html>

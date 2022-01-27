@@ -1,21 +1,24 @@
 {% extends'layout/playarea.html.twig' %}
+{#Etendre le layout du site  pour avoir toute la css et js nécessaire ainsi que la structure de base#}
+
 
 {% block content %}
 
     <div class="bueno-search-area section-padding-100-0 pb-70 bg-img">
         <div class="row">
             <div class="container">
+{#                on fait une boucle pour pouvoir trouver parmis toutes les aires de jeux #}
                 {% for area in areas %}
-
+{# on fait un include pour ajouter un bout de code#}
                     {% include 'include/area-tile.html.twig' %}
 
                 {% else %}
+{#                    faire un else au cas où il n' y a aucun résultat à la recherche et le dire à l'utilisateur#}
                     <h5>Désolé aucun résultat trouvé</h5>
                 {% endfor %}
             </div>
         </div>
     </div>
-
 
 
 {% endblock content %}
