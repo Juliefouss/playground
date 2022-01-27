@@ -1,7 +1,7 @@
-{#Création d'un layout destiné uniquement aux pages du site excepté celles de l'admin
-celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code#}
+{# Création d'un layout destiné uniquement aux pages du site excepté celles de l'admin
+celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code #}
 {% extends 'base.html.twig' %}
-{#Etendre la base pour avoir la structure de base#}
+{# Etendre la base pour avoir la structure de base #}
 
 {% block stylesheets %}
     <link rel="stylesheet" href={{ asset("css/style.css") }}>
@@ -12,23 +12,23 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
     <link rel="stylesheet" href={{ asset("css/magnific-popup.css") }}>
     <link rel="stylesheet" href={{ asset("css/nice-select.css") }}>
     <link rel="stylesheet" href={{ asset("css/owl.carousel.min.css") }}>
-    <link rel="stylesheet" href={{ asset("https://use.fontawesome.com/releases/v5.7.0/css/all.css")}}>
-    <link href={{ asset("/posts/assets/css/style.css") }}>
-    <link href={{ asset("/posts/assets/vendor/animate.css/animate.min.css") }} >
-    <link href={{ asset("/posts/assets/vendor/aos/aos.css") }} >
-    <link href={{ asset("/posts/assets/vendor/bootstrap/css/bootstrap.min.css") }} >
-    <link href={{ asset("/posts/assets/vendor/bootstrap-icons/bootstrap-icons.css") }} >
-    <link href={{ asset("/posts/assets/vendor/boxicons/css/boxicons.min.css") }} >
-    <link href={{ asset("/posts/assets/vendor/glightbox/css/glightbox.min.css") }} >
-    <link href={{ asset("/posts/assets/vendor/swiper/swiper-bundle.min.css") }} >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link href={{ asset("posts/assets/css/style.css") }}>
+    <link href={{ asset("posts/assets/vendor/animate.css/animate.min.css") }}>
+    <link href={{ asset("posts/assets/vendor/aos/aos.css") }}>
+    <link href={{ asset("posts/assets/vendor/bootstrap/css/bootstrap.min.css") }}>
+    <link href={{ asset("posts/assets/vendor/bootstrap-icons/bootstrap-icons.css") }}>
+    <link href={{ asset("posts/assets/vendor/boxicons/css/boxicons.min.css") }}>
+    <link href={{ asset("posts/assets/vendor/glightbox/css/glightbox.min.css") }}>
+    <link href={{ asset("posts/assets/vendor/swiper/swiper-bundle.min.css") }}>
 
     <!-- Vendor JS Files -->
-    <script src={{ asset("/posts/assets/vendor/aos/aos.js") }}></script>
-    <script src={{ asset("/posts/assets/vendor/bootstrap/js/bootstrap.bundle.min.js") }}></script>
-    <script src={{ asset("/posts/assets/vendor/glightbox/js/glightbox.min.js") }}></script>
-    <script src={{ asset("/posts/assets/vendor/isotope-layout/isotope.pkgd.min.js") }}></script>
-    <script src={{ asset("/posts/assets/vendor/swiper/swiper-bundle.min.js") }}></script>
-    <script src={{ asset("/posts/assets/vendor/php-email-form/validate.js") }}></script>
+    <script src={{ asset("posts/assets/vendor/aos/aos.js") }}></script>
+    <script src={{ asset("posts/assets/vendor/bootstrap/js/bootstrap.bundle.min.js") }}></script>
+    <script src={{ asset("posts/assets/vendor/glightbox/js/glightbox.min.js") }}></script>
+    <script src={{ asset("posts/assets/vendor/isotope-layout/isotope.pkgd.min.js") }}></script>
+    <script src={{ asset("posts/assets/vendor/swiper/swiper-bundle.min.js") }}></script>
+    <script src={{ asset("posts/assets/vendor/php-email-form/validate.js") }}></script>
 
 
 {% endblock stylesheets %}
@@ -38,7 +38,7 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
     <header class="header-area">
 
         <!-- Top Header Area -->
-        <div class="top-header-area bg-img bg-overlay" >
+        <div class="top-header-area bg-img bg-overlay">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-between">
 
@@ -46,11 +46,11 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
                         <!-- Top SearchAdmin Area -->
                         <div class="top-search-area">
 
-                                    {% set searchForm = getSearchForm() %}
-                                    {{ form_start (searchForm) }}
-                                    {{ form_widget (searchForm.keyword) }}
-                                    {{ form_widget (searchForm.submit, {label_html: true, label:'<i class="fa fa-search green-color"></i>'}) }}
-                                    {{ form_end (searchForm) }}
+                            {% set searchForm = getSearchForm() %}
+                            {{ form_start (searchForm) }}
+                            {{ form_widget (searchForm.keyword) }}
+                            {{ form_widget (searchForm.submit, {label_html: true, label:'<i class="fa fa-search green-color"></i>'}) }}
+                            {{ form_end (searchForm) }}
 
                         </div>
                     </div>
@@ -71,7 +71,7 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
                     <nav class="classy-navbar justify-content-between" id="buenoNav">
 
                         <!-- Toggler -->
-                        <a href="{{ url("home") }}"> <i class="fas fa-puzzle-piece fa-4x" ></i></a>
+                        <a href="{{ url("home") }}"> <i class="fas fa-puzzle-piece fa-4x"></i></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -89,19 +89,33 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a {% if app.request.get('route' == 'home')%} class="active " {% endif%} href="{{ url('home') }}">Accueil</a></li>
-                                    <li><a {% if app.request.get('route' == 'search')%} class="active" {% endif%}href="{{ url('viewArea') }}">Plaines</a></li>
-                                    <li><a {% if app.request.get('route' == 'search')%} class="active" {% endif%}href="{{ url('searchEngine') }}">Recherche</a></li>
-                                    <li><a {% if app.request.get('route' == 'proposal')%} class="active" {% endif%} href="{{ url('proposal') }}">Soumettre</a></li>
-                                    <li><a {% if app.request.get('route' == 'contact')%} class="active" {% endif%}href="{{ url('contact') }}">Contacter</a></li>
+                                    <li><a {% if app.request.get('route' == 'home') %} class="active " {% endif %}
+                                                href="{{ url('home') }}">Accueil</a></li>
+                                    <li><a {% if app.request.get('route' == 'search') %} class="active"
+                                                                                         {% endif %}href="{{ url('viewArea') }}">Plaines</a>
+                                    </li>
+                                    <li><a {% if app.request.get('route' == 'search') %} class="active"
+                                                                                         {% endif %}href="{{ url('searchEngine') }}">Recherche</a>
+                                    </li>
+                                    <li><a {% if app.request.get('route' == 'proposal') %} class="active" {% endif %}
+                                                href="{{ url('proposal') }}">Soumettre</a></li>
+                                    <li><a {% if app.request.get('route' == 'contact') %} class="active"
+                                                                                          {% endif %}href="{{ url('contact') }}">Contacter</a>
+                                    </li>
                                 </ul>
 
                                 <!-- Login/Register -->
                                 <div class="login-area">
-                                    <a  class="small" href="{{ url('app_login') }}">Se connecter</a>
-                                    <a  class="small" href="{{ url('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a>
-                                    <a class="small" href="{{ url('register') }}">S'enregistrer</a>
+                                    {% if app.user %}
+                                        <a class="small" href="{{ url('app_logout') }}">Se déconnecter</a>
+                                    {% else %}
+                                        <a class="small" href="{{ url('app_login') }}">Se connecter</a>
+                                        <a class="small" href="{{ url('register') }}">S'enregistrer</a>
+                                    {% endif %}
+{#                                    c'est pour uniquement afficher l icone que pour l admin#}
+                                    {% if is_granted("ROLE_ADMIN") %}
                                     <a href="{{ url('admin-home') }}"><i class="fas fa-user-shield green-color"></i></a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <!-- Nav End -->
@@ -123,8 +137,11 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
             <div class="row">
                 <div class="col-12 col-sm-5">
                     <!-- Copywrite Text -->
-                    <p class="copywrite-text"><a href="#"></a><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fas fa-heart"></i>  by <a href={{ asset("https://colorlib.com" ) }} >Colorlib</a>
+                    <p class="copywrite-text"><a href="#"></a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="fas fa-heart"></i> by <a
+                                href={{ asset("https://colorlib.com" ) }}>Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div>
 
@@ -155,7 +172,7 @@ celui-ci charge tout ce qui est css et js et permet de ne pas duppliquer du code
      <!--Supplément Commentflag-->
     <script src={{ asset ("js/jquery/scripts.js") }}></script>
 
-    <script src={{ asset ("/posts/assets/js/main.js") }}></script>
+    <script src={{ asset ("posts/assets/js/main.js") }}></script>
 
     {% endblock javascript %}
 

@@ -72,7 +72,7 @@ class SearchUserType extends AbstractType
                 ]
             ])
 
-            ->add('Submit', SubmitType::class, ['label'=> 'Envoyer']);
+            ->add('Submit', SubmitType::class, ['label'=> 'Chercher']);
     }
 
 
